@@ -81,11 +81,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="etatPlot.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="etatPlot.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modeles/dto/etatPlot.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1462">
               <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="param.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/param.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="66" lean-forward="false" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -117,6 +127,7 @@
         <option value="$PROJECT_DIR$/modeles/dto/etatStation.php" />
         <option value="$PROJECT_DIR$/modeles/dto/etatPlot.php" />
         <option value="$PROJECT_DIR$/modeles/dto/etatVelo.php" />
+        <option value="$PROJECT_DIR$/config/param.php" />
       </list>
     </option>
   </component>
@@ -205,12 +216,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508506426074</updated>
-      <workItem from="1508506428670" duration="2615000" />
+      <workItem from="1508506428670" duration="2719000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2615000" />
+    <option name="totallyTimeSpent" value="2719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -330,6 +341,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1462">
           <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/param.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="66" lean-forward="false" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
           <folding />
         </state>
       </provider>

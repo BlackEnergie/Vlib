@@ -1,8 +1,8 @@
 <?php
-//Définition des variables de connexion
+//Dï¿½finition des variables de connexion
 class Param {
-	public static $user = 'championnat';
-	public static $pass = 'championnat';
-	public static $dsn = 'mysql:host=localhost;dbname=championnat;charset=utf8';
+	public static $user = 'perrint';
+	public static $pass = 'perrint';
+	public static $dsn = 'mysql:host=localhost;dbname=perrint_vlib;charset=utf8';
 }
 ?>

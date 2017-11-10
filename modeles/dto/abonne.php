@@ -12,26 +12,23 @@ class abonne{
     /**
      * abonne constructor.
      * @param $codeAcces
-     * @param $codeSecret
-     * @param $nom
-     * @param $prenom
-     * @param $dateDebutAbo
-     * @param $datefinAbo
-     * @param $creditTemps
-     * @param $montantADebiter
-
      */
-    public function __construct($codeAcces, $codeSecret, $nom, $prenom, $dateDebutAbo, $datefinAbo, $creditTemps, $montantADebiter)
+
+    public function __construct($codeAcces)
     {
         $this->codeAcces = $codeAcces;
-        $this->codeSecret = $codeSecret;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->dateDebutAbo = $dateDebutAbo;
-        $this->datefinAbo = $datefinAbo;
-        $this->creditTemps = $creditTemps;
-        $this->montantADebiter = $montantADebiter;
+    }
 
+    public function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value)
+        {
+            $method = 'set'.ucfirst($key);
+            if (method_exists($this, $method))
+            {
+                $this->$method($value);
+            }
+        }
     }
 
     /**

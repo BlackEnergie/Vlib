@@ -1,5 +1,6 @@
 <?php
 class etatVelo{
+    private $leVelo;
     private $etat;
     private $dureeInterv;
     private $heure;
@@ -7,17 +8,35 @@ class etatVelo{
 
     /**
      * etatVelo constructor.
+     * @param $leVelo
      * @param $etat
      * @param $dureeInterv
      * @param $heure
      * @param $date
      */
-    public function __construct($etat, $dureeInterv, $heure, $date)
+    public function __construct($leVelo, $etat, $dureeInterv, $heure, $date)
     {
+        $this->LeVelo = $leVelo;
         $this->etat = $etat;
         $this->dureeInterv = $dureeInterv;
         $this->heure = $heure;
         $this->date = $date;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLeVelo()
+    {
+        return $this->leVelo;
+    }
+
+    /**
+     * @param mixed $laStation
+     */
+    public function setLeVelo($leVelo)
+    {
+        $this->leVelo = $leVelo;
     }
 
     /**

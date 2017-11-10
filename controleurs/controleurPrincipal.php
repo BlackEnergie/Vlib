@@ -16,7 +16,7 @@ else
     }
 }
 
-$vlibMP = new Menu("vlibMP");
+$vlibMP = new Menu("menuPrincipal");
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("accueil", "Accueil"));
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("stations", "Stations"));
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("tarifs", "Tarifs"));

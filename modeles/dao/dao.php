@@ -78,14 +78,14 @@ class StationDAO{
 
 
 
-    public static function lesEquipes(){
+        public static function lesStations(){
         $result = array();
-        $sql = "select * from equipe order by nomEquipe " ;
+        $sql = "select * from STATION order by NOMS " ;
         $liste = DBConnex::getInstance()->queryFetchAll($sql);
         if(!empty($liste)){
-            foreach($liste as $equipe){
-                $uneEquipe = new Equipe($equipe['idEquipe'],$equipe['nomEquipe'] );
-                $uneEquipe->hydrate($equipe);
+            foreach($liste as $station){
+                $uneEquipe = new station($station['idEquipe'],$station['nomEquipe'] );
+                $uneEquipe->hydrate($station);
                 $result[] = $uneEquipe;
             }
         }

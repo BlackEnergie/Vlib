@@ -19,6 +19,7 @@ class abonne{
      * @param $datefinAbo
      * @param $creditTemps
      * @param $montantADebiter
+
      */
     public function __construct($codeAcces, $codeSecret, $nom, $prenom, $dateDebutAbo, $datefinAbo, $creditTemps, $montantADebiter)
     {
@@ -30,6 +31,7 @@ class abonne{
         $this->datefinAbo = $datefinAbo;
         $this->creditTemps = $creditTemps;
         $this->montantADebiter = $montantADebiter;
+
     }
 
     /**
@@ -153,14 +155,15 @@ class abonne{
     }
 
     /**
-     * @param mixed $montantADebiter
+     * @param mixed $numTelephone
      */
     public function setMontantADebiter($montantADebiter)
     {
         $this->montantADebiter = $montantADebiter;
+
+
+
     }
-
-
 
 
 }

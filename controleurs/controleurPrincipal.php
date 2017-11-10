@@ -18,12 +18,15 @@ else
 
 $vlibMP = new Menu("vlibMP");
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("accueil", "Accueil"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("services", "Services"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("locaux", "Locaux"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("ligues", "Ligues"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("contact", "Contact"));
+$vlibMP->ajouterComposant($vlibMP->creerItemLien("stations", "Stations"));
+$vlibMP->ajouterComposant($vlibMP->creerItemLien("tarifs", "Tarifs"));
+$vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'utilisation"));
+$vlibMP->ajouterComposant($vlibMP->creerItemLien("connection", "Se connecter"));
 
 
 $menuPrincipal = $vlibMP->creerMenu($_SESSION['vlibMP'],'vlibMP');
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34ddfc9a69a015d113f76ac7aaf01faa56407705

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <div id ='nav'>
     <?php
@@ -6,6 +7,8 @@
 </div>
 
 
+=======
+>>>>>>> 34ddfc9a69a015d113f76ac7aaf01faa56407705
 <div class='bandeau'>
 	<div class="logo">Vlib</div>
 </div>

@@ -13,7 +13,7 @@ class Menu{
 	 * Constructeur de la classe Menu
 	 * @param $unStyle (style pour css)
 	 */
-	public function __construct($unStyle ){
+	public function __construct($unStyle){
 		$this->style = $unStyle;
 	}
 

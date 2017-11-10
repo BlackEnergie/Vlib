@@ -1,6 +1,6 @@
 <?php
 
-class DBConnex
+class DBConnex extends PDO
 {
     private static $instance;
 
@@ -71,12 +71,10 @@ class StationDAO{
 
 
     public static function lire(station $station){
-        $sql = "select * from STATION where ";
-        $equipe = DBConnex::getInstance()->queryFetchFirstRow($sql);
-        return $equipe;
+        $sql = "select * from STATION where NUMS='". $station->getNum() ."'" ;
+        $station = DBConnex::getInstance()->queryFetchFirstRow($sql);
+        return $station;
     }
-
-
 
         public static function lesStations(){
         $result = array();
@@ -84,48 +82,72 @@ class StationDAO{
         $liste = DBConnex::getInstance()->queryFetchAll($sql);
         if(!empty($liste)){
             foreach($liste as $station){
-                $uneEquipe = new station($station['idEquipe'],$station['nomEquipe'] );
-                $uneEquipe->hydrate($station);
-                $result[] = $uneEquipe;
+                $uneStation = new station($station['NUMS']);
+                $uneStation->hydrate($station);
+                $result[] = $uneStation;
             }
         }
         return $result;
     }
 
-    public static function modifier(Equipe $equipe){
-        $sql = "update equipe set 
-                    nomEquipe = '" . $equipe->getNomEquipe() . "',
-                    nomEquipeLong = '" .$equipe->getNomEquipeLong() . "',
-                    nomEntraineur = '" . $equipe->getNomEntraineur(). "',
-                    nomPresident = '" . $equipe->getNomPresident() . "',
-                    dateFondation = " . $equipe->getDateFondation() .
-            "where idEquipe =" . $equipe->getIdEquipe();
-        return DBConnex::getInstance()->update($sql);
-    }
-
-    public static function ajouter(Equipe $equipe){
-        $sql = "insert into equipe values (" . $equipe->getIdEquipe() ."
-                '" . $equipe->getNomEquipe() . "','" .$equipe->getNomEquipeLong() .
-            "','" . $equipe->getNomEntraineur() . "','" .$equipe->getNomEntraineur() .
-            "','" . $equipe->getNomPresident() . "'," . $equipe->getDateFondation();
-        return DBConnex::getInstance()->queryFetchAll($sql);
-    }
-
-    public static function supprimer(Equipe $equipe){
-        $sql = "delete from equipe where idEquipe = " . $equipe->getIdEquipe();
-        return DBConnex::GetInstance()->queryFetchAll($sql);
-    }
-
 }
 
-Class utilisateurDAO{
+Class AbonneDAO{
 
-    public static function verification(Utilisateur $utilisateur){
-        $sql = "select login from Utilisateur where login = '" . $utilisateur->getLogin() . "' and  mdp =  '" .md5($utilisateur->getMdp()) ."'";
+    public static function verification(abonne $abonne){
+        $sql = "select CODEACCES from ABONNE where CODEACCES = '" . $abonne->getCodeAcces() . "' and  mdp =  '" .md5($abonne->getCodeSecret()) ."'";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
         if(empty($login)){
             return null;
         }
         return $login[0];
+    }
+}
+
+class PlotDAO{
+
+
+    public static function lire(plot $plot){
+        $sql = "select * from PLOT where NUM='" . $plot->getNum() ."'";
+        $plot = DBConnex::getInstance()->queryFetchFirstRow($sql);
+        return $plot;
+    }
+
+    public static function lesPlots(){
+        $result = array();
+        $sql = "select * from PLOT order by NUM" ;
+        $liste = DBConnex::getInstance()->queryFetchAll($sql);
+        if(!empty($liste)){
+            foreach($liste as $plot){
+                $uneStation = new plot($plot['numPlot'],$plot['nomStation'] );
+                $uneStation->hydrate($plot);
+                $result[] = $uneStation;
+            }
+        }
+        return $result;
+    }
+
+}
+
+class VeloDAO{
+
+    public static function lire(velo $velo){
+        $sql = "select * from VELO where NUMV='" . $velo->getNum() ."'";
+        $velo = DBConnex::getInstance()->queryFetchAll($sql);
+        return $velo;
+    }
+
+    public static function lesVelos(){
+        $result = array();
+        $sql = "select * from VELO order by NUMV" ;
+        $liste = DBConnex::getInstance()->queryFetchAll($sql);
+        if(!empty($liste)){
+            foreach($liste as $velo){
+                $unVelo = new velo($velo['NUMV']);
+                $unVelo->hydrate($velo);
+                $result[] = $unVelo;
+            }
+        }
+        return $result;
     }
 }

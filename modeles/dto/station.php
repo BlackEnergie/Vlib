@@ -16,14 +16,22 @@ class station{
      * @param $capacite
      * @param $numBorne
      */
-    public function __construct($num, $EtatActuel, $nom, $situation, $capacite, $numBorne)
+    public function __construct($num)
     {
         $this->num = $num;
-        $this->EtatActuel = $EtatActuel;
-        $this->nom = $nom;
-        $this->situation = $situation;
-        $this->capacite = $capacite;
-        $this->numBorne = $numBorne;
+    }
+
+
+    public function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value)
+        {
+            $method = 'set'.ucfirst($key);
+            if (method_exists($this, $method))
+            {
+                $this->$method($value);
+            }
+        }
     }
 
     /**

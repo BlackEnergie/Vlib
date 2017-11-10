@@ -4,17 +4,27 @@ class velo{
     private $EtatActuel;
     private $DMEC;
 
+    public function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value)
+        {
+            $method = 'set'.ucfirst($key);
+            if (method_exists($this, $method))
+            {
+                $this->$method($value);
+            }
+        }
+    }
+
     /**
      * velo constructor.
      * @param $num
      * @param $EtatActuel
      * @param $DMEC
      */
-    public function __construct($num, $EtatActuel, $DMEC)
+    public function __construct($num)
     {
         $this->num = $num;
-        $this->EtatActuel = $EtatActuel;
-        $this->DMEC = $DMEC;
     }
 
     /**

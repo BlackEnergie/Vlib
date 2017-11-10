@@ -1,5 +1,6 @@
 <?php
 class plot{
+    private $numStation;
     private $num;
     private $etatActuel;
 
@@ -8,11 +9,30 @@ class plot{
      * @param $num
      * @param $etatActuel
      */
-    public function __construct($num, $etatActuel)
+    public function __construct($numStation, $num, $etatActuel)
     {
+        $this->numStation = $numStation;
         $this->num = $num;
         $this->etatActuel = $etatActuel;
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getNumStation()
+    {
+        return $this->numStation;
+    }
+
+    /**
+     * @param mixed $numStation
+     */
+    public function setNumStation($numStation)
+    {
+        $this->numStation = $numStation;
+    }
+
 
     /**
      * @return mixed

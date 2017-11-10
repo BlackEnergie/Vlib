@@ -4,7 +4,7 @@ require_once 'fonctions/menu.php';
 require_once 'fonctions/formulaire.php';
 require_once 'fonctions/dispatcher.php';
 
-
+$messageErreurConnexion= '';
 
 if(isset($_GET['vlibMP'])){
     $_SESSION['vlibMP']= $_GET['vlibMP'];
@@ -21,8 +21,9 @@ $vlibMP->ajouterComposant($vlibMP->creerItemLien("accueil", "Accueil"));
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("stations", "Stations"));
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("tarifs", "Tarifs"));
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'utilisation"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("connection", "Se connecter"));
+$vlibMP->ajouterComposant($vlibMP->creerItemLien("connexion", "Se connecter"));
 
 
 $menuPrincipal = $vlibMP->creerMenu($_SESSION['vlibMP'],'vlibMP');
 
+include_once dispatcher::dispatch($_SESSION['vlibMP']);

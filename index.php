@@ -12,6 +12,7 @@ session_start()?>
 	<body>
 		<?php
 			include_once 'controleurs/controleurPrincipal.php';
+
 			include_once 'vues/squeletteConnexion.php';
 		?>
 	</body>

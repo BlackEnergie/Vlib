@@ -10,7 +10,7 @@ class controleurConnexion
 {
 <?php
 
-if(!isset($_SESSION['identification']) || !$_SESSION['identification']){
+if(!isset($_SESSION['vlibMP']) || !$_SESSION['vlibMP']){
 
 
 $formulaireConnexion = new Formulaire('post', 'index.php', 'fConnexion', 'fConnexion');
@@ -35,7 +35,7 @@ include_once 'vues/squeletteConnexion.php';
 }
 else{
     $_SESSION['identification']=array();
-    $_SESSION['menuPrincipal']="equipeC";
+    $_SESSION['vlibMP']="equipeC";
     header('location: index.php');
 }
 ?>

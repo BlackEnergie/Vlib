@@ -1,18 +1,19 @@
 <?php
 class plot{
-    private $numStation;
+    private $laStation;
     private $num;
     private $etatActuel;
 
 
     /**
      * plot constructor.
+     * @param $laStation
      * @param $num
      * @param $etatActuel
      */
-    public function __construct($numStation, $num, $etatActuel)
+    public function __construct($laStation, $num, $etatActuel)
     {
-        $this->numStation = $numStation;
+        $this->laStation = $laStation;
         $this->num = $num;
         $this->etatActuel = $etatActuel;
     }
@@ -21,17 +22,17 @@ class plot{
     /**
      * @return mixed
      */
-    public function getNumStation()
+    public function getLaStation()
     {
-        return $this->numStation;
+        return $this->laStation;
     }
 
     /**
      * @param mixed $numStation
      */
-    public function setNumStation($numStation)
+    public function setLaStation($numStation)
     {
-        $this->numStation = $numStation;
+        $this->laStation = $laStation;
     }
 
     /**

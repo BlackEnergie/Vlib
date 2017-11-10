@@ -1,6 +1,7 @@
 <?php
 class velo{
     private $num;
+    private $lePlot;
     private $EtatActuel;
     private $DMEC;
 
@@ -10,9 +11,10 @@ class velo{
      * @param $EtatActuel
      * @param $DMEC
      */
-    public function __construct($num, $EtatActuel, $DMEC)
+    public function __construct($num, $lePlot, $EtatActuel, $DMEC)
     {
         $this->num = $num;
+        $this->lePlot = $lePlot;
         $this->EtatActuel = $EtatActuel;
         $this->DMEC = $DMEC;
     }
@@ -31,6 +33,22 @@ class velo{
     public function setNum($num)
     {
         $this->num = $num;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLePlot()
+    {
+        return $this->lePlot;
+    }
+
+    /**
+     * @param mixed $num
+     */
+    public function setLePlot($lePlot)
+    {
+        $this->lePlot = $lePlot;
     }
 
     /**

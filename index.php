@@ -1,4 +1,5 @@
-<?php 
+<?php
+require_once 'auto/autoload.php';
 session_start()?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,7 +14,6 @@ session_start()?>
 		<?php
 			include_once 'controleurs/controleurPrincipal.php';
 
-			include_once 'vues/squeletteConnexion.php';
 		?>
 	</body>
 </html>

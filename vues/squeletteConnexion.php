@@ -7,8 +7,7 @@
 <div id="content">
     <div id="classement">
         <?php
-       /* $formulaireConnexion->afficherFormulaire(); */
-        /*$formulaireConnexion->afficherFormulaire();*/
+        $formulaireConnexion->afficherFormulaire();
         ?>
     </div>
 </div>

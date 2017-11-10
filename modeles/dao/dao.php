@@ -76,7 +76,7 @@ class StationDAO{
         return $station;
     }
 
-        public static function lesStations(){
+    public static function lesStations(){
         $result = array();
         $sql = "select * from STATION order by NOMS " ;
         $liste = DBConnex::getInstance()->queryFetchAll($sql);

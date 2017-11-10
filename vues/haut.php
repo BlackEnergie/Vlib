@@ -1,10 +1,5 @@
-<?php
-<div class='bandeau'>
-	<div class="logo">Vlib</div>
+<div id ='nav'>
+    <?php
+    $menuPrincipal->affichermenu($_SESSION['menuPrincipalC']);
+    ?>
 </div>
-
-<nav class="menuPrincipal">
-	<?php
-	echo $menuPrincipal;
-	?>
-</nav>

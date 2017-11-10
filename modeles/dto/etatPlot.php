@@ -1,5 +1,6 @@
 <?php
 class etatPlot{
+    private $lePlot;
     private $etat;
     private $dureeinterv;
     private $heure;
@@ -12,12 +13,31 @@ class etatPlot{
      * @param $heure
      * @param $date
      */
-    public function __construct($etat, $dureeinterv, $heure, $date)
+    public function __construct($lePlot, $etat, $dureeinterv, $heure, $date)
     {
+        $this->lePlot = $lePlot;
         $this->etat = $etat;
         $this->dureeinterv = $dureeinterv;
         $this->heure = $heure;
         $this->date = $date;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getLePlot()
+    {
+        return $this->lePlot;
+    }
+
+    /**
+     * @param mixed $laStation
+     */
+    public function setLeplot($lePlot)
+    {
+        $this->lePlot = $lePlot;
     }
 
     /**

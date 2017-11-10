@@ -4,6 +4,7 @@ class plot{
     private $num;
     private $etatActuel;
 
+
     /**
      * plot constructor.
      * @param $num
@@ -32,7 +33,6 @@ class plot{
     {
         $this->numStation = $numStation;
     }
-
 
     /**
      * @return mixed

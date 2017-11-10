@@ -26,7 +26,3 @@ $vlibMP->ajouterComposant($vlibMP->creerItemLien("connection", "Se connecter"));
 
 $menuPrincipal = $vlibMP->creerMenu($_SESSION['vlibMP'],'vlibMP');
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 34ddfc9a69a015d113f76ac7aaf01faa56407705

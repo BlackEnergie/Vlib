@@ -1,4 +1,4 @@
-<?php
+
 <div class='bandeau'>
 	<div class="logo">Vlib</div>
 </div>

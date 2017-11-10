@@ -27,4 +27,3 @@ $vlibMP->ajouterComposant($vlibMP->creerItemLien("contact", "Contact"));
 $menuPrincipal = $vlibMP->creerMenu($_SESSION['vlibMP'],'vlibMP');
 
 
-include_once dispatcher::dispatch($_SESSION['vlibMP']);

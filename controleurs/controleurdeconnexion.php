@@ -1,5 +1,5 @@
 <?php
+// déconnecte l'abonné du site et rafraichit la page
 session_destroy();
-//include_once 'vues/deconnexion.php';
 header('location: index.php');
 ?>

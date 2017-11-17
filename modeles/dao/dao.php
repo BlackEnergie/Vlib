@@ -163,6 +163,6 @@ class VeloDAO{
     }
 
     public static function emprunterVelo(velo $velo){
-        $sql = "ALTER TABLE "
+        $sql = "ALTER TABLE ";
     }
 }

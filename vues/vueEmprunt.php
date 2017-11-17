@@ -5,7 +5,7 @@
     </div>
 
     <div id="content">
-
+        <?php $formulaireRechercheStation->afficherFormulaire() ;?>
 
         <div id="bas">
             <?php  include 'bas.php' ;?>

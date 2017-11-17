@@ -1,7 +1,6 @@
 <?php
 class abonne{
     private $codeAcces;
-    private $codeSecret;
     private $nom;
     private $prenom;
     private $dateDebutAbo;
@@ -45,22 +44,6 @@ class abonne{
     public function setCodeAcces($codeAcces)
     {
         $this->codeAcces = $codeAcces;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCodeSecret()
-    {
-        return $this->codeSecret;
-    }
-
-    /**
-     * @param mixed $codeSecret
-     */
-    public function setCodeSecret($codeSecret)
-    {
-        $this->codeSecret = $codeSecret;
     }
 
     /**

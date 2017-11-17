@@ -38,7 +38,7 @@
                                             <td>$station[3]</td></tr>";
                             }
                         }
-                        return $tab;
+                        echo $tab;
                     ?>
                 </tbody>
             </table>

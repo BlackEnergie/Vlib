@@ -28,6 +28,7 @@
                     $selectEtatStation = Formulaire::creerSelect(etatStation, etatStation, null, $TabOptions);
 
                     /* Création du tableau avec le choix de l'etat des station, le n°, le nom, le nombre de velo disponible, le nombre de places, ... */
+                    $tab = "";
                     $listeStation = StationDAO::lesStations();
                     if(count($listeStation) > 0){
                         foreach($listeStation as $station){
@@ -66,6 +67,7 @@
 
 
                 /* Création du tableau avec le choix de l'etat des velos, le n°, la station, le plot */
+                $tab = "";
                 $listeVelos = VeloDAO::lesVelos();
                 if(count($listeVelos) > 0){
                     foreach($listeVelos as $velo){
@@ -102,6 +104,7 @@
 
 
                 /* Création du tableau avec le choix de l'etat des plots, le n°, la station, le vélo présent */
+                $tab = "";
                 $listePlots = PlotDAO::lesPlots();
                 if(count($listePlots) > 0){
                     foreach($listePlots as $plot){

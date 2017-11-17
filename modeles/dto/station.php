@@ -1,8 +1,8 @@
-.<?php
+<?php
 class station{
-    private $num;
+    public $NUMS;
     private $EtatActuel;
-    private $nom;
+    public $nom;
     private $situation;
     private $capacite;
     private $numBorne;
@@ -18,7 +18,7 @@ class station{
      */
     public function __construct($num)
     {
-        $this->num = $num;
+        $this->NUMS = $num;
     }
 
 
@@ -26,7 +26,7 @@ class station{
     {
         foreach ($donnees as $key => $value)
         {
-            $method = 'set'.ucfirst($key);
+            $method = 'set'.($key);
             if (method_exists($this, $method))
             {
                 $this->$method($value);
@@ -37,23 +37,23 @@ class station{
     /**
      * @return mixed
      */
-    public function getNum()
+    public function getNUMS()
     {
-        return $this->num;
+        return $this->NUMS;
     }
 
     /**
-     * @param mixed $num
+     * @param mixed $NUMS
      */
-    public function setNum($num)
+    public function setNUMS($NUMS)
     {
-        $this->num = $num;
+        $this->NUMS = $NUMS;
     }
 
     /**
      * @return mixed
      */
-    public function getEtatActuel()
+    public function getETATS()
     {
         return $this->EtatActuel;
     }
@@ -61,7 +61,7 @@ class station{
     /**
      * @param mixed $EtatActuel
      */
-    public function setEtatActuel($EtatActuel)
+    public function setETATS($EtatActuel)
     {
         $this->EtatActuel = $EtatActuel;
     }
@@ -69,7 +69,7 @@ class station{
     /**
      * @return mixed
      */
-    public function getNom()
+    public function getNOMS()
     {
         return $this->nom;
     }
@@ -77,7 +77,7 @@ class station{
     /**
      * @param mixed $nom
      */
-    public function setNom($nom)
+    public function setNOMS($nom)
     {
         $this->nom = $nom;
     }
@@ -85,7 +85,7 @@ class station{
     /**
      * @return mixed
      */
-    public function getSituation()
+    public function getSITUATIONS()
     {
         return $this->situation;
     }
@@ -93,7 +93,7 @@ class station{
     /**
      * @param mixed $situation
      */
-    public function setSituation($situation)
+    public function setSITUATIONS($situation)
     {
         $this->situation = $situation;
     }
@@ -101,7 +101,7 @@ class station{
     /**
      * @return mixed
      */
-    public function getCapacite()
+    public function getCAPACITES()
     {
         return $this->capacite;
     }
@@ -109,7 +109,7 @@ class station{
     /**
      * @param mixed $capacite
      */
-    public function setCapacite($capacite)
+    public function setCAPACITES($capacite)
     {
         $this->capacite = $capacite;
     }
@@ -117,7 +117,7 @@ class station{
     /**
      * @return mixed
      */
-    public function getNumBorne()
+    public function getNUMBORNE()
     {
         return $this->numBorne;
     }
@@ -125,7 +125,7 @@ class station{
     /**
      * @param mixed $numBorne
      */
-    public function setNumBorne($numBorne)
+    public function setNUMBORNE($numBorne)
     {
         $this->numBorne = $numBorne;
     }

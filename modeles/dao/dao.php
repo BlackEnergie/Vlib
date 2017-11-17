@@ -1,7 +1,8 @@
 <?php
+require_once 'configs/param.php';
 
-class DBConnex extends PDO
-{
+class DBConnex extends PDO{
+
     private static $instance;
 
     public static function getInstance(){
@@ -16,7 +17,7 @@ class DBConnex extends PDO
             parent::__construct(Param::$dsn ,Param::$user, Param::$pass);
         } catch (Exception $e) {
             echo $e->getMessage();
-            die("Impossible de se connecter. " );
+            die("Impossible de se connecter." );
         }
     }
 

@@ -5,16 +5,16 @@
 </div>
 
 <div id="content">
-    <div id="classement">
+    <div class="contentConnexion">
         <?php
         $formulaireConnexion->afficherFormulaire();
         ?>
-    </div>
-</div>
 
+    </div>
+
+</div>
 <div id="bas">
     <?php  include 'bas.php' ;?>
 </div>
 
 </div>
-

@@ -96,7 +96,7 @@ class StationDAO{
 Class AbonneDAO{
 
     public static function verification(abonne $abonne){
-        $sql = "select CODEACCES from ABONNE where CODEACCES = '" . $abonne->getCodeAcces() . "' and  mdp =  '" .md5($abonne->getCodeSecret()) ."'";
+        $sql = "select CODEACCES from ABONNE where CODEACCES = '" . $abonne->getCodeAcces() . "' and  CODESECRET =  '" . $_POST['mdp'] ."'";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
         if(empty($login)){
             return null;

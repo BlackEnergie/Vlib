@@ -5,8 +5,10 @@
     </div>
 
     <div id="content">
-        <?php $formulaireRechercheStation->afficherFormulaire() ;?>
-
+        <div class="contentRecherche">
+            <img src="images/vlib.jpg" class="vlib"/>
+            <?php $formulaireRechercheStation->afficherFormulaire() ;?>
+        </div>
         <div id="bas">
             <?php  include 'bas.php' ;?>
         </div>

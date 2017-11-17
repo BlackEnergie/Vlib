@@ -407,3 +407,9 @@ a.anchor {
     vertical-align: middle;
     padding: 150px;
 }
+
+.vlib{
+    border-radius: 50%;
+    diplay : block;
+    margin : auto;
+}

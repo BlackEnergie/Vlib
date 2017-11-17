@@ -15,6 +15,7 @@
                     <tr>
                         <td>N°</td>
                         <td>Nom</td>
+                        <td>Etat</td>
                         <td>Vélo</td>
                         <td>Places</td>
                         <td>/td>
@@ -30,6 +31,7 @@
                             foreach($listeStation as $station){
                                 $tab .="<tr><td>$station[0]</td>
                                             <td>$station[2]</td>
+                                            <td>$station[1]</td>
                                             <td>$station[4]</td>
                                             <td>$station[5]</td>
                                             <td></td>

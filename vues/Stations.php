@@ -28,12 +28,12 @@
                         $listeStation = StationDAO::lesStations();
                         if(count($listeStation) > 0){
                             foreach($listeStation as $station){
-                                $tab .= <tr><td>$station[0]</td>
+                                $tab .="<tr><td>$station[0]</td>
                                             <td>$station[2]</td>
                                             <td>$station[4]</td>
                                             <td>$station[5]</td>
                                             <td></td>
-                                            <td>$station[3]</td></tr>;
+                                            <td>$station[3]</td></tr>";
                             }
                         }
                         return $tab;

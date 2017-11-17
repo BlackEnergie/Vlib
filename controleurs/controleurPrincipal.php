@@ -32,15 +32,23 @@ if (isset($_POST['login'],$_POST['mdp'])){
 $vlibMP = new Menu("menuPrincipal");
 
 if (isset($_SESSION['identification'])&& $_SESSION['identification']){
+
     $vlibMP->ajouterComposant($vlibMP->creerItemLien("MonCompte", "Mon compte"));
+
 }
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("accueil", "Accueil"));
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("stations", "Stations"));
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("AbonnementsEtTarifs", "Abonnements et tarifs"));
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'utilisation"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("connexion", "Se connecter"));
 
+if (isset($_SESSION['identification'])&& $_SESSION['identification']){
+  $vlibMP->ajouterComposant($vlibMP->creerItemLien("emprunt", "Emprunt"));
+$vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
+}
+else {
 
+  $vlibMP->ajouterComposant($vlibMP->creerItemLien("connexion", "Se connecter"));
+}
 $menuPrincipal = $vlibMP->creerMenu($_SESSION['vlibMP'],'vlibMP');
 
 include_once dispatcher::dispatch($_SESSION['vlibMP']);

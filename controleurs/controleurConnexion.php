@@ -1,7 +1,6 @@
 <?php
 
-if(!isset($_SESSION['identifiant']) || !$_SESSION['identifiant'])
-{
+//if(!isset($_SESSION['identifiant']) || !$_SESSION['identifiant']){
 
 $formulaireConnexion = new Formulaire('post', 'index.php', 'fConnexion', 'fConnexion');
 
@@ -23,14 +22,15 @@ $formulaireConnexion->creerFormulaire();
 
 include_once 'vues/squeletteConnexion.php';
 
-}
-
+//}
+/*
 else{
 
+echo('test');
     $_SESSION['identifiant'] = array();
     $_SESSION['vlibMP'] = "accueil";
 
     header('location: index.php');
 }
-
+*/
 ?>

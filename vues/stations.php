@@ -18,7 +18,7 @@
                         <td>Etat</td>
                         <td>Vélo</td>
                         <td>Places</td>
-                        <td>/td>
+                        <td></td>
                         <td></td>
                     </tr>
                 </thead><

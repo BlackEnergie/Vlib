@@ -83,6 +83,7 @@ class StationDAO{
         $liste = DBConnex::getInstance()->queryFetchAll($sql);
         if(!empty($liste)){
             foreach($liste as $station){
+
                 $uneStation = new station($station['NUMS']);
                 $uneStation->hydrate($station);
                 $result[] = $uneStation;

@@ -27,14 +27,20 @@
                         /* Création du tableau avec l'etat des station, le n°, le nom, le nombre de velo disponible, le nombre de places, ... */
                         $tab = "";
                         $listeStation = StationDAO::lesStations();
+
+                        $test = new station(38);
+                        echo $test->getNUMS() . "test<br/>";
+
                         if(count($listeStation) > 0){
                             foreach($listeStation as $station){
-                                $tab .= "<tr><td>$station[0]</td>
-                                            <td>$station[2]</td>
-                                            <td>$station[4]</td>
-                                            <td>$station[5]</td>
-                                            <td></td>
-                                            <td>$station[3]</td></tr>";
+                                $tab .= "<tr><td>" . $station->getNUMS() ."</td>";
+                                $tab .= "<td>" . $station->getNOMS() ."</td>";
+                                $tab .= "<td>" . $station->getETATS() ."</td>";
+                                $tab .= "<td>" . $station->getNUMBORNE() ."</td>";
+                                $tab .= "<td>" . $station->getCAPACITES() ."</td>";
+                                $tab .= "<td>" . "</td>";
+                                $tab .= "<td>" ."</td>";
+                                $tab .= "</tr>";
                             }
                         }
                         echo $tab;

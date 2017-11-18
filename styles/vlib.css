@@ -178,7 +178,7 @@ nav.menuPrincipal ul li a {
     display: table-cell;
     text-decoration: none;
     color: white;
-    text-align: center;
+    text-align: middle;
     vertical-align: middle;
     height: 50px;
     width: 140px;
@@ -192,7 +192,7 @@ nav.menuPrincipal ul li .actif {
     display: table-cell;
     background-color: ivory;
     color: black;
-    text-align: center;
+    text-align: middle;
     vertical-align: middle;
     height: 50px;
     width: 140px;
@@ -356,6 +356,7 @@ a.anchor {
     text-align: center;
     vertical-align: middle;
     padding: 150px;
+    height: auto;
 }
 
 .connexion {

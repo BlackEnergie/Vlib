@@ -3,7 +3,11 @@
 </div>
 
 <div class='bandeau'>
-	<div class="logo">Vlib</div>
+	<div class="logo">
+        <a href="index.php?vlibMP=accueil">
+        <img src="images/icon-vlib.png">
+        </a>
+    </div>
 </div>
 
 <nav class="menuPrincipal">

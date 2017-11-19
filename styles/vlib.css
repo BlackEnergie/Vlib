@@ -20,7 +20,8 @@ html, body {
 .conteneur {
     margin: 0px;
     padding: 0px;
-    width: 100% font-size: 0px;
+    width: 100% ;
+    font-size : 0px;
 }
 
 
@@ -141,7 +142,7 @@ footer p {
 
 .bandeau {
     height: 160px;
-    background: linear-gradient(rgba(0, 0, 150, 0.5), rgba(0, 0, 200, 0.6)), url("../images/header2.jpg");
+    background: linear-gradient(rgba(0, 0, 150, 0.3), rgba(0, 0, 200, 0.6)), url("../images/header2.jpg");
 }
 
 
@@ -154,7 +155,7 @@ footer p {
 /****************************************************/
 
 nav.menuPrincipal {
-    background-color: skyblue;
+    background-color: #b3b3b3;
     font-size: 0px;
     text-align: right;
     height: 50px;
@@ -178,21 +179,23 @@ nav.menuPrincipal ul li a {
     display: table-cell;
     text-decoration: none;
     color: white;
-    text-align: middle;
+    text-align: center;
     vertical-align: middle;
     height: 50px;
     width: 140px;
+    -webkit-transition-duration: 0.3s ;
 }
 
 nav.menuPrincipal ul li a:hover {
     color: grey;
+    -webkit-transition-duration: 0.3s ;
 }
 
 nav.menuPrincipal ul li .actif {
     display: table-cell;
     background-color: ivory;
     color: black;
-    text-align: middle;
+    text-align: center;
     vertical-align: middle;
     height: 50px;
     width: 140px;
@@ -218,7 +221,6 @@ nav.menuPrincipal ul li .actif {
 .texteAccueil h1 {
     padding-top: 20px;
     padding-bottom: 20px;
-    text-algn: center;
     text-align: center;
 }
 
@@ -363,7 +365,7 @@ a.anchor {
     display: inline-block;
     font-size: 15px;
     width: 400px;
-    height: 240px;
+    height: 270px;
     border: 1px solid black;
 }
 
@@ -383,7 +385,7 @@ a.anchor {
 .connexion .ligne label {
     display: inline-block;
     width: 150px;
-    text-align: right;
+    text-align: center;
     padding-right: 10px;
     font-weight: bold;
 }
@@ -394,11 +396,21 @@ a.anchor {
 }
 
 .connexion .ligne input[type=submit] {
-    display: inline-block;
-    width: 150px;
-    font-size: 18px;
-    font-weight: bold;
+    background-color: #f0f0f0;
+    padding: 10px 24px;
     text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 2px;
+    border: 2px solid rgba(0, 0, 200, 0.6);
+    -webkit-transition-duration: 0.4s ;
+}
+
+.connexion .ligne input[type=submit]:hover {
+    -webkit-transition-duration: 0.4s ;
+    color: white;
+    background-color: rgba(0, 0, 200, 0.6);
 }
 
 .contentRecherche {
@@ -411,6 +423,7 @@ a.anchor {
 
 .vlib{
     border-radius: 50%;
-    diplay : block;
-    margin : auto;
+    display : block;
+    margin-left: auto;
+    margin-right: auto;
 }

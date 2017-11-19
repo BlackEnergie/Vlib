@@ -92,6 +92,17 @@ class StationDAO{
         return $result;
     }
 
+    public static function rechercher($nom){
+        $result = array();
+        $sql = "select NUMS, NOMS, CAPACITES from station where NOMS LIKE '" . $nom . "%'";
+        $liste = DBConnex::getInstance()->queryFetchAll($sql);
+        if(!empty($liste)){
+            foreach($liste as $station){
+                $result[] = $station;
+            }
+        }
+        return $result;
+    }
 }
 
 Class AbonneDAO{

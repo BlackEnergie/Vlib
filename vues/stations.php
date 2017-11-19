@@ -21,15 +21,12 @@
                         <td></td>
                         <td></td>
                     </tr>
-                </thead><
+                </thead>
                 <tbody>
                     <?php
                         /* Création du tableau avec l'etat des station, le n°, le nom, le nombre de velo disponible, le nombre de places, ... */
                         $tab = "";
                         $listeStation = StationDAO::lesStations();
-
-                        $test = new station(38);
-                        echo $test->getNUMS() . "test<br/>";
 
                         if(count($listeStation) > 0){
                             foreach($listeStation as $station){

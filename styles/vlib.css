@@ -128,7 +128,12 @@ footer p {
     display: inline-block;
     font-size: 50px;
     color: white;
-    margin-left: 10px;
+    margin-left: 18px;
+    margin-top: 18px;
+}
+
+.logo img:hover{
+
 }
 
 
@@ -141,7 +146,7 @@ footer p {
 /****************************************************/
 
 .bandeau {
-    height: 160px;
+    height: 180px;
     background: linear-gradient(rgba(0, 0, 150, 0.3), rgba(0, 0, 200, 0.6)), url("../images/header2.jpg");
 }
 
@@ -413,12 +418,12 @@ a.anchor {
     background-color: rgba(0, 0, 200, 0.6);
 }
 
+
 .contentRecherche {
-    background-color: #f0f0f0;
     font-size: 0px;
     text-align: center;
     vertical-align: middle;
-    padding: 150px;
+    margin-top: 40px;
 }
 
 .vlib{

@@ -9,9 +9,9 @@
             $formulaireRechercheStation->afficherFormulaire();
             ?>
     </div>
-    <div class="content">
+    <div class="tabStations">
         <?php
-            echo tabStation($lesStations, $entete, "", "");
+            echo tabStation($lesStations, $entete,"tabStations");
         ?>
     </div>
         <div id="bas">

@@ -5,7 +5,7 @@
 }
 
 html, body {
-    font-family: sans-serif;
+    font-family: "Open Sans";
 }
 
 
@@ -133,11 +133,6 @@ footer p {
     margin-left: 18px;
     margin-top: 18px;
 }
-
-.logo img:hover{
-
-}
-
 
 /****************************************************/
 
@@ -372,7 +367,7 @@ a.anchor {
     display: inline-block;
     font-size: 15px;
     width: 400px;
-    height: 270px;
+    height: 285px;
     border: 1px solid black;
 }
 
@@ -402,24 +397,29 @@ a.anchor {
     width: 200px;
 }
 
-.connexion .ligne input[type=submit] {
-    background-color: #f0f0f0;
-    padding: 10px 24px;
-    text-align: center;
-    text-decoration: none;
+/* Style des input */
+
+input[type=text] , [type=password] {
+    width: 200px;
+    padding: 5px 5px;
+    margin-right: 8px;
     display: inline-block;
-    font-size: 16px;
-    border-radius: 2px;
-    border: 2px solid rgba(0, 0, 200, 0.6);
-    -webkit-transition-duration: 0.4s ;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.connexion .ligne input[type=submit]:hover {
-    -webkit-transition-duration: 0.4s ;
+input[type=submit]{
+    font-family: "Open Sans";
+    font-weight: bold;
+    padding : 5px 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
     color: white;
-    background-color: rgba(0, 0, 200, 0.6);
+    background-color: rgba(0, 0, 150, 0.3);
 }
 
+/* Formulaire de recherches de stations */
 
 .contentRecherche {
     font-size: 0px;
@@ -428,6 +428,19 @@ a.anchor {
     margin-top: 40px;
 }
 
+.contentRecherche input[type=text]{
+    width: 260px;
+    background-image: url("../images/search-icon.png");
+    background-size: 20px 20px;
+    background-position: 1px 3px;
+    background-repeat: no-repeat;
+    padding-left: 24px;
+    margin-bottom: 7px;
+}
+
+
+/*logo Vlib */
+
 .vlib{
     border-radius: 50%;
     display : block;
@@ -435,16 +448,50 @@ a.anchor {
     margin-right: auto;
 }
 
+/* Message bienvenue utilisateur */
 .bienvenue{
     position: absolute;
     top: 0px;
     right: 0px;
     text-align: center;
     margin-top: 60px;
-    margin-right: 13px;
+    margin-right: 11px;
+}
+
+.bienvenue a {
+    text-decoration: none;
 }
 
 .bienvenue p{
     color: white;
     font-size: 25px;
+}
+
+/* Tableau des Stations */
+
+.tabStations{
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-family: "Open Sans";
+}
+
+.tabStations a {
+    text-decoration: none;
+}
+
+.tabStations table{
+    border-collapse: collapse;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.tabStations td , th{
+    width: 180px;
+    height: 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabStations th {
+    background-color: rgba(0, 0, 150, 0.3);
 }

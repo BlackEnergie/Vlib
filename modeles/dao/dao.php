@@ -117,7 +117,6 @@ Class AbonneDAO{
         return $login[0];
     }
 
-
     public static function verifEmprunt(abonne $abonne){
         $sql = "select NOM, PRENOM from ABONNE WHERE CODEACCES ='" . $abonne->getCodeAcces() . "'and CODESECRET = '" . $_POST['codeSecret'] . "'" ;
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);

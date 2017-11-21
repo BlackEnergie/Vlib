@@ -11,7 +11,7 @@
     <div class="bienvenue">
         <?php
         if(isset($_SESSION['identification'])){
-            echo "<p>Bienvenue</p><p>" . $_SESSION['identification'] . "</p>";
+            echo "<a href='?vlibMP=MonCompte'><p>Bienvenue</p><p>" . $_SESSION['identification'] . "</p></a>";
         }
         ?>
     </div>

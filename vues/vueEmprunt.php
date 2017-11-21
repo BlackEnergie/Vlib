@@ -11,22 +11,7 @@
     </div>
     <div class="content">
         <?php
-        if(isset($_POST['rechercheStation'])){
-            $lesStations = StationDAO::rechercher($_POST['rechercheStation']);
-            $entete = array();
-            $entete[0] = "Numéro Station";
-            $entete[1] = "Nom";
-            $entete[2] = "Capacité";
-            echo tableauHtml($lesStations, $entete, "" , "", "");
-        }
-        else{
-            $lesStations = StationDAO::rechercher("");
-            $entete = array();
-            $entete[0] = "Numéro Station";
-            $entete[1] = "Nom";
-            $entete[2] = "Capacité";
-            echo tableauHtml($lesStations, $entete, "" , "", "");
-        }
+            echo tabStation($lesStations, $entete, "", "");
         ?>
     </div>
         <div id="bas">

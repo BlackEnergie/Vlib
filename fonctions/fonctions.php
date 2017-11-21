@@ -22,3 +22,24 @@ function tableauHtml($tab,$entete , $classEntete, $classTab, $classLigne){
     $res .= "</table>";
     return $res;
 }
+
+function tabStation($tab, $entete, $classEntete, $classTab){
+    $res = "<table class'" . $classTab . "'>";
+    if(count($entete)){
+        $res .= "<tr>";
+        foreach ($entete as $cellule){
+            $res .= "<th class='" . $classEntete . "'>" . $cellule . "</th>";
+        }
+        $res .= "</tr>";
+    }
+    if (count($tab) > 0){
+        foreach($tab as $station){
+            $res .= "<tr><td>";
+            $res .= $station->getNUMS() . "</td><td>";
+            $res .= $station->getNOMS() . "</td><td>";
+            $res .= $station->getCAPACITES() . "</td></tr>";
+        }
+    }
+    $res .= "</table>";
+    return $res;
+}

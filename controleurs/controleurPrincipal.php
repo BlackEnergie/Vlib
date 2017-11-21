@@ -48,13 +48,11 @@ $vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'uti
 //********* verifie si l'abonne est connecté
 // il affiche des onglets supplémentaire concernant l'abonne**********
 if (isset($_SESSION['identification'])){
-
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("emprunt", "Emprunter un vélo"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("MonCompte", "Mon compte"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("emprunt", "Emprunter un vélo"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("MonCompte", "Mon compte"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
 }
 else {
-
   $vlibMP->ajouterComposant($vlibMP->creerItemLien("connexion", "Se connecter"));
 }
 //*********** crée le menu principal

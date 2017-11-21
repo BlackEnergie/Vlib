@@ -70,7 +70,6 @@ class DBConnex extends PDO{
 
 class StationDAO{
 
-
     public static function lire(station $station){
         $sql = "select * from STATION where NUMS='". $station->getNum() ."'" ;
         $station = DBConnex::getInstance()->queryFetchFirstRow($sql);
@@ -98,7 +97,9 @@ class StationDAO{
         $liste = DBConnex::getInstance()->queryFetchAll($sql);
         if(!empty($liste)){
             foreach($liste as $station){
-                $result[] = $station;
+                $uneStation = new station($station['NUMS']);
+                $uneStation->hydrate($station);
+                $result[] = $uneStation;
             }
         }
         return $result;

@@ -9,4 +9,18 @@ $formulaireRechercheStation->ajouterComposantTab();
 
 $formulaireRechercheStation->creerFormulaire();
 
+$entete = array();
+$entete[0] = "Numéro Station";
+$entete[1] = "Nom";
+$entete[2] = "Capacité";
+
+$lesStations = array();
+
+if(isset($_POST['rechercheStation'])){
+    $lesStations = StationDAO::rechercher($_POST['rechercheStation']);
+} else{
+    $lesStations = StationDAO::lesStations();
+}
+
+
 include_once "vues/vueEmprunt.php";

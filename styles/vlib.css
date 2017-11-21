@@ -125,7 +125,9 @@ footer p {
 /****************************************************/
 
 .logo {
-    display: inline-block;
+    top: 0px;
+    left:0px;
+    position: absolute;
     font-size: 50px;
     color: white;
     margin-left: 18px;
@@ -431,4 +433,18 @@ a.anchor {
     display : block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.bienvenue{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    text-align: center;
+    margin-top: 60px;
+    margin-right: 13px;
+}
+
+.bienvenue p{
+    color: white;
+    font-size: 25px;
 }

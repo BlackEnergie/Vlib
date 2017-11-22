@@ -107,7 +107,14 @@ class StationDAO{
 }
 
 Class AbonneDAO{
-
+  /*
+creation des requetes suivante nécessaire :
+  - insertion d'un nouvel abonnée
+  - modification des donnée d'un abonnée
+  - suppression d'un abonnée
+récupéré md5 de championnat afin d'enregistrer le code choisi
+par l'abonné de façon crypté 
+  */
     public static function verification(abonne $abonne){
         $sql = "select CODEACCES from ABONNE where CODEACCES = '" . $abonne->getCodeAcces() . "' and  CODESECRET =  '" . $_POST['mdp'] ."'";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);

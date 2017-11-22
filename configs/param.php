@@ -3,6 +3,6 @@
 class Param {
 	public static $user = 'root';
 	public static $pass = 'root';
-	public static $dsn = 'mysql:host=127.0.0.1;dbname=perrint_vlib;charset=utf8';
+	public static $dsn = 'mysql:host=127.0.0.1:8889;dbname=perrint_vlib;charset=utf8';
 }
 ?>

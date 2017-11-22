@@ -5,12 +5,16 @@
     </div>
 
     <div id="content">
-        <div class="contentRecherche">
-            <img src="images/vlib.jpg" class="vlib"/>
-            <?php $formulaireRechercheStation->afficherFormulaire() ;?>
-        </div>
+            <?php
+            $formulaireRechercheStation->afficherFormulaire();
+            ?>
+    </div>
+    <div class="tabStations">
+        <?php
+            echo tabStation($lesStations, $entete,"tabStations");
+        ?>
+    </div>
         <div id="bas">
             <?php  include 'bas.php' ;?>
         </div>
-
-    </div>
+</div>

@@ -20,6 +20,7 @@ $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabel($me
 $formulaireConnexion->ajouterComposantTab();
 $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLien('controleurs/controleurInscription.php','Pas encore inscrit ? cliquez ici!'));
 $formulaireConnexion->ajouterComposantTab();
+
 $formulaireConnexion->creerFormulaire();
 
 

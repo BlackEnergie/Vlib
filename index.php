@@ -6,6 +6,7 @@ session_start()?>
 	<head>
 		<meta charset="utf-8" />
 		<title>Vlib</title>
+        <link rel="icon" href="images/icon-vlib.ico">
 		<style type="text/css">
 			@import url(styles/vlib.css);
 		</style>

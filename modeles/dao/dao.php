@@ -70,7 +70,6 @@ class DBConnex extends PDO{
 
 class StationDAO{
 
-
     public static function lire(station $station){
         $sql = "select * from STATION where NUMS='". $station->getNum() ."'" ;
         $station = DBConnex::getInstance()->queryFetchFirstRow($sql);
@@ -92,6 +91,19 @@ class StationDAO{
         return $result;
     }
 
+    public static function rechercher($nom){
+        $result = array();
+        $sql = "select NUMS, NOMS, CAPACITES from station where NOMS LIKE '" . $nom . "%' order by NOMS";
+        $liste = DBConnex::getInstance()->queryFetchAll($sql);
+        if(!empty($liste)){
+            foreach($liste as $station){
+                $uneStation = new station($station['NUMS']);
+                $uneStation->hydrate($station);
+                $result[] = $uneStation;
+            }
+        }
+        return $result;
+    }
 }
 
 Class AbonneDAO{
@@ -104,7 +116,6 @@ Class AbonneDAO{
         }
         return $login[0];
     }
-
 
     public static function verifEmprunt(abonne $abonne){
         $sql = "select NOM, PRENOM from ABONNE WHERE CODEACCES ='" . $abonne->getCodeAcces() . "'and CODESECRET = '" . $_POST['codeSecret'] . "'" ;

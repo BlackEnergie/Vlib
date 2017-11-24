@@ -69,8 +69,8 @@ elseif (isset($_SESSION['identificationResp'])){
 }
 else {
   $vlibMP->ajouterComposant($vlibMP->creerItemLien("AbonnementsEtTarifs", "Abonnements et tarifs"));
-  $vlibMP->ajouterComposant($vlibMP->creerItemLien("connexion", "Se connecter"));
   $vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'utilisation"));
+  $vlibMP->ajouterComposant($vlibMP->creerItemLien("connexion", "Se connecter"));
 }
 //*********** crée le menu principal
 $menuPrincipal = $vlibMP->creerMenu($_SESSION['vlibMP'],'vlibMP');

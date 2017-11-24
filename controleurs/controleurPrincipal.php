@@ -4,6 +4,7 @@ require_once 'fonctions/menu.php';
 require_once 'fonctions/formulaire.php';
 require_once 'fonctions/dispatcher.php';
 require_once 'modeles/dto/abonne.php';
+require_once 'modeles/dto/responsable.php';
 require_once 'modeles/dao/dao.php';
 require_once 'fonctions/fonctions.php';
 
@@ -32,8 +33,17 @@ if (isset($_POST['login'],$_POST['mdp'])){
         $_SESSION['vlibMP']='accueil';
     }
     else{
-        $messageErreurConnexion='Login ou mot de passe incorrect';
+        $unResponsable =new responsable($_POST['login']);
+        $_SESSION['identificationResp']=responsableDAO::verification($unResponsable);
+
+        if($_SESSION['identificationResp']) {
+            $_SESSION['vlibMP'] = 'accueil';
+        }
+        else{
+            $messageErreurConnexion='Login ou mot de passe incorrect';
+        }
     }
+
 }
 
 //************ cree un nouveau menu principal***********
@@ -50,6 +60,10 @@ $vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'uti
 if (isset($_SESSION['identification'])){
     $vlibMP->ajouterComposant($vlibMP->creerItemLien("emprunt", "Emprunter un vélo"));
     $vlibMP->ajouterComposant($vlibMP->creerItemLien("MonCompte", "Mon compte"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
+}
+elseif (isset($_SESSION['identificationResp'])){
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("maintenance", "Maintenance"));
     $vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
 }
 else {

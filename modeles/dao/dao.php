@@ -214,6 +214,48 @@ par l'abonné de façon crypté
     }
 }
 
+
+Class ResponsableDAO{
+    /*
+  creation des requetes suivante nécessaire :
+    - insertion d'un nouveau responsable
+    - modification des donnée d'un responsable
+    - suppression d'un responsable
+  récupéré md5 de championnat afin d'enregistrer le code choisi
+  par le responsable de façon crypté
+    */
+    public static function verification(responsable $responsable){
+        $sql = "select CODEACCES from RESPONSABLE where CODEACCES = '" . $responsable->getCodeAcces() . "' and  CODESECRET =  '" . $_POST['mdp'] ."'";
+        $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
+        if(empty($login)){
+            return null;
+        }
+        return $login[0];
+    }
+    public static function insertResponsable($codeacces, $codesecret, $codea, $nom, $prenom, $dateEmbauche)
+    {
+        $sql = "INSERT INTO responsable (CODEACCES, CODESECRET, CODEA, NOM, PRENOM, DATEEMBAUCHE) VALUES (:codeacces,:codesecret,:codea,:nom,:prenom,:dateEmbauche)";
+        $req = DBConnex::getInstance()->prepare($sql);
+        $req->bindParam(1, $codeacces);
+        $req->bindParam(2, $codesecret);
+        $req->bindParam(3, $codea);
+        $req->bindParam(4, $nom);
+        $req->bindParam(5, $prenom);
+        $req->bindParam(6, $dateEmbauche);
+        $req->execute();
+    }
+
+    public function deleteResponsable($codeA, $codeS)
+    {
+        $sql = "DELETE FROM responsable WHERE CODEACCES = :codeacces  AND CODESECRET = :codesecret";
+        $req = DBConnex::getInstance()->prepare($sql);
+        $req->bindParam(1, $codeA);
+        $req->bindParam(2, $codeS);
+        $req->execute();
+    }
+
+}
+
 class PlotDAO{
 
 

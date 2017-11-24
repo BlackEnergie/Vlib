@@ -495,3 +495,10 @@ input[type=submit]{
 .tabStations th {
     background-color: rgba(0, 0, 150, 0.3);
 }
+
+/* AbonnementsEtTarifs */
+
+.infos{
+  width: 250px;
+  display: inline-block;
+}

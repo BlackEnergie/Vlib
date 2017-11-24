@@ -36,17 +36,13 @@ if (isset($_POST['login'],$_POST['mdp'])){
     }
 }
 
-if(isset($_POST['inscription'])){
-    $_SESSION['vlibMP']='inscription';
-}
-
 //************ cree un nouveau menu principal***********
 $vlibMP = new Menu("menuPrincipal");
 
 
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("accueil", "Accueil"));
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("stations", "Stations"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("AbonnementsEtTarifs", "Abonnements et tarifs"));
+
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'utilisation"));
 
 //********* verifie si l'abonne est connecté
@@ -57,6 +53,7 @@ if (isset($_SESSION['identification'])){
     $vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
 }
 else {
+  $vlibMP->ajouterComposant($vlibMP->creerItemLien("AbonnementsEtTarifs", "Abonnements et tarifs"));
   $vlibMP->ajouterComposant($vlibMP->creerItemLien("connexion", "Se connecter"));
 }
 //*********** crée le menu principal

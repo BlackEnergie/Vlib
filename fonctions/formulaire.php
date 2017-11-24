@@ -71,7 +71,8 @@ class Formulaire{
 	}
 
 public function creerInputRadio($unnom, $unevaleur,$unLabel){
-	$composant="<input type ='radio' name='" . $unnom . "value ='". $unevaleur ."'>".$unLabel;
+	$composant="<input type = 'radio' name='" . $unnom . "' value ='". $unevaleur ."'>".$unLabel;
+	return $composant;
 	}
 
 	public function creerLabelFor($unFor,  $unLabel){

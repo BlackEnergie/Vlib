@@ -86,6 +86,8 @@ $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerLabel
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputMdp('confirmationmdp', 'confirmationmdp', '', '', 0));
 $formulaireInscription->ajouterComposantTab();
 
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputSubmit('inscription',"inscription","Valider"));
+$formulaireInscription->ajouterComposantTab();
 $formulaireInscription->creerFormulaire();
 
  include_once 'vues/inscription.php';

@@ -70,7 +70,6 @@ class DBConnex extends PDO{
 
 class StationDAO{
 
-
     public static function lire(station $station){
         $sql = "select * from STATION where NUMS='". $station->getNum() ."'" ;
         $station = DBConnex::getInstance()->queryFetchFirstRow($sql);
@@ -92,10 +91,30 @@ class StationDAO{
         return $result;
     }
 
+    public static function rechercher($nom){
+        $result = array();
+        $sql = "select NUMS, NOMS, CAPACITES from station where NOMS LIKE '" . $nom . "%' order by NOMS";
+        $liste = DBConnex::getInstance()->queryFetchAll($sql);
+        if(!empty($liste)){
+            foreach($liste as $station){
+                $uneStation = new station($station['NUMS']);
+                $uneStation->hydrate($station);
+                $result[] = $uneStation;
+            }
+        }
+        return $result;
+    }
 }
 
 Class AbonneDAO{
-
+  /*
+creation des requetes suivante nécessaire :
+  - insertion d'un nouvel abonnée
+  - modification des donnée d'un abonnée
+  - suppression d'un abonnée
+récupéré md5 de championnat afin d'enregistrer le code choisi
+par l'abonné de façon crypté 
+  */
     public static function verification(abonne $abonne){
         $sql = "select CODEACCES from ABONNE where CODEACCES = '" . $abonne->getCodeAcces() . "' and  CODESECRET =  '" . $_POST['mdp'] ."'";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
@@ -104,7 +123,6 @@ Class AbonneDAO{
         }
         return $login[0];
     }
-
 
     public static function verifEmprunt(abonne $abonne){
         $sql = "select NOM, PRENOM from ABONNE WHERE CODEACCES ='" . $abonne->getCodeAcces() . "'and CODESECRET = '" . $_POST['codeSecret'] . "'" ;

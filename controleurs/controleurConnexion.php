@@ -5,21 +5,22 @@
 
 $formulaireConnexion = new Formulaire('post', 'index.php', 'fConnexion', 'connexion');
 
-$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabelFor('identifiant', 'Identifiant :'), 1);
-$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputTexte('login', 'login', '', 1, '', 0), 1);
+$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabelFor('identifiant', 'Identifiant :'));
+$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputTexte('login', 'login', '', 1, '', 0));
 $formulaireConnexion->ajouterComposantTab();
 
-$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabelFor('mdp', 'Mot de passe :'), 1);
-$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputMdp('mdp', 'mdp', '', '', 0), 1);
+$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabelFor('mdp', 'Mot de passe :'));
+$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputMdp('mdp', 'mdp', '', '', 0));
 $formulaireConnexion->ajouterComposantTab();
 
-$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputSubmit('submitConnex', 'submitConnex', 'Valider'), 2);
+$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputSubmit('submitConnex', 'submitConnex', 'Valider'));
 $formulaireConnexion->ajouterComposantTab();
 
-$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabel($messageErreurConnexion, "messageErreurConnexion"), 2);
+$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabel($messageErreurConnexion, "messageErreurConnexion"));
 $formulaireConnexion->ajouterComposantTab();
-$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLien('controleurs/controleurInscription.php','Pas encore inscrit ? cliquez ici!'));
+$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputSubmit('inscription', 'inscription', 'Inscrivez-vous !'));
 $formulaireConnexion->ajouterComposantTab();
+
 $formulaireConnexion->creerFormulaire();
 
 

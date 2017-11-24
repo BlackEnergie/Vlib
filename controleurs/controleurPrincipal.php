@@ -5,6 +5,7 @@ require_once 'fonctions/formulaire.php';
 require_once 'fonctions/dispatcher.php';
 require_once 'modeles/dto/abonne.php';
 require_once 'modeles/dao/dao.php';
+require_once 'fonctions/fonctions.php';
 
 
 
@@ -35,6 +36,10 @@ if (isset($_POST['login'],$_POST['mdp'])){
     }
 }
 
+if(isset($_POST['inscription'])){
+    $_SESSION['vlibMP']='inscription';
+}
+
 //************ cree un nouveau menu principal***********
 $vlibMP = new Menu("menuPrincipal");
 
@@ -47,13 +52,11 @@ $vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'uti
 //********* verifie si l'abonne est connecté
 // il affiche des onglets supplémentaire concernant l'abonne**********
 if (isset($_SESSION['identification'])){
-
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("emprunt", "Emprunt"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("MonCompte", "Mon compte"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("emprunt", "Emprunter un vélo"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("MonCompte", "Mon compte"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
 }
 else {
-
   $vlibMP->ajouterComposant($vlibMP->creerItemLien("connexion", "Se connecter"));
 }
 //*********** crée le menu principal

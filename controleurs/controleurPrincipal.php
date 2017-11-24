@@ -53,7 +53,6 @@ $vlibMP = new Menu("menuPrincipal");
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("accueil", "Accueil"));
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("stations", "Stations"));
 
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'utilisation"));
 
 //********* verifie si l'abonne est connecté
 // il affiche des onglets supplémentaire concernant l'abonne**********
@@ -71,6 +70,7 @@ elseif (isset($_SESSION['identificationResp'])){
 else {
   $vlibMP->ajouterComposant($vlibMP->creerItemLien("AbonnementsEtTarifs", "Abonnements et tarifs"));
   $vlibMP->ajouterComposant($vlibMP->creerItemLien("connexion", "Se connecter"));
+  $vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'utilisation"));
 }
 //*********** crée le menu principal
 $menuPrincipal = $vlibMP->creerMenu($_SESSION['vlibMP'],'vlibMP');

@@ -36,6 +36,10 @@ if (isset($_POST['login'],$_POST['mdp'])){
     }
 }
 
+if(isset($_POST['inscription'])){
+    $_SESSION['vlibMP']='inscription';
+}
+
 //************ cree un nouveau menu principal***********
 $vlibMP = new Menu("menuPrincipal");
 

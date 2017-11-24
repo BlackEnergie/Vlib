@@ -37,12 +37,12 @@ $formulaireInscription24h->creerFormulaire();
 $formulaireInscription = new Formulaire('post', 'index.php', 'fInscript', 'fInscript');
 
 $formulaireInscription -> ajouterComposantLigne($formulaireInscription->creerLabelFor('civilité','Civilité'));
-ajouterComposantTab();
+$formulaireInscription24h->ajouterComposantTab();
 
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputRadio('civilite','monsieur','M.'));
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputRadio('civilite','madame','Mme'));
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputRadio('civilite','mademoiselle','Mlle'));
-ajouterComposantTab();
+$formulaireInscription24h->ajouterComposantTab();
 
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerLabelFor('nom', 'Nom *'));
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputTexte('nom', 'nom', '', 1, '', 0));

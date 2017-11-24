@@ -18,7 +18,7 @@ $formulaireConnexion->ajouterComposantTab();
 
 $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabel($messageErreurConnexion, "messageErreurConnexion"));
 $formulaireConnexion->ajouterComposantTab();
-$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLien('Inscription.php','Pas encore inscrit ? cliquez ici!'));
+$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputSubmit('inscription', 'inscription', 'Inscrivez-vous !'));
 $formulaireConnexion->ajouterComposantTab();
 
 $formulaireConnexion->creerFormulaire();

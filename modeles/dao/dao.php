@@ -104,6 +104,12 @@ class StationDAO{
         }
         return $result;
     }
+
+    public static function nbDeVeloDispo($num){
+        $sql = "select count(PLOT.NUM) from PLOT where PLOT.NUMV is not Null and PLOT.NUMS=". $num  ;
+        $nbVelo = DBConnex::getInstance()->queryFetchFirstRow($sql);
+        return $nbVelo[0];
+    }
 }
 
 Class AbonneDAO{

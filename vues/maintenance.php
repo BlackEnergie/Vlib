@@ -30,15 +30,16 @@
                     /* Création du tableau avec le choix de l'etat des station, le n°, le nom, le nombre de velo disponible, le nombre de places, ... */
                     $tab = "";
                     $listeStation = StationDAO::lesStations();
+                    
                     if(count($listeStation) > 0){
                         foreach($listeStation as $station){
                             $tab .= "<tr><td>" . $station->getNUMS() ."</td>";
                             $tab .= "<td>" . $station->getNOMS() ."</td>";
                             $tab .= "<td>" .$selectEtatStation ."</td>";
-                            $tab .= "<td>" . $station->getNUMBORNE() ."</td>";
+                            $tab .= "<td>" .StationDAO::NbDeVeloDispo($station->getNUMS())  ."</td>";
                             $tab .= "<td>" . $station->getCAPACITES() ."</td>";
-                            $tab .= "<td>" . "</td>";
-                            $tab .= "<td>" ."</td>";
+                            $tab .= "<td>" ."CB". "</td>";
+                            $tab .= "<td>" ."->Plan"."</td>";
                             $tab .= "</tr>";
 
 

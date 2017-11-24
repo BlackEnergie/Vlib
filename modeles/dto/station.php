@@ -1,11 +1,28 @@
 <?php
 class station{
-    public $NUMS;
+    private $NUMS;
     private $EtatActuel;
-    public $nom;
+    private $nom;
     private $situation;
     private $capacite;
     private $numBorne;
+    private $nbVelos;
+
+    /**
+     * @return mixed
+     */
+    public function getNbVelos()
+    {
+        return $this->nbVelos;
+    }
+
+    /**
+     * @param mixed $nbVelos
+     */
+    public function setNbVelos($nbVelos)
+    {
+        $this->nbVelos = $nbVelos;
+    }
 
     /**
      * station constructor.
@@ -19,6 +36,7 @@ class station{
     public function __construct($num)
     {
         $this->NUMS = $num;
+        $this->nbVelos = StationDAO::nbDeVeloDispo($num);
     }
 
 
@@ -33,6 +51,7 @@ class station{
             }
         }
     }
+
 
     /**
      * @return mixed

@@ -367,7 +367,7 @@ a.anchor {
     display: inline-block;
     font-size: 15px;
     width: 400px;
-    height: 285px;
+    height: inherit;
     border: 1px solid black;
 }
 

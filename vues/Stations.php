@@ -33,7 +33,7 @@
                                 $tab .= "<tr><td>" . $station->getNUMS() ."</td>";
                                 $tab .= "<td>" . $station->getNOMS() ."</td>";
                                 $tab .= "<td>" . $station->getETATS() ."</td>";
-                                $tab .= "<td>" .StationDAO::NbDeVeloDispo($station->getNUMS()) ."</td>";
+                                $tab .= "<td>" . $station->getNbVelos() ."</td>";
                                 $tab .= "<td>" . $station->getCAPACITES() ."</td>";
                                 $tab .= "<td>" ."CB". "</td>";
                                 $tab .= "<td>" ."->Plan"."</td>";

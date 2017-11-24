@@ -8,7 +8,7 @@ $formulaireInscription24h->ajouterComposantLigne($formulaireInscription24h->cree
 $formulaireInscription24h->ajouterComposantTab();
 
 $formulaireInscription24h->ajouterComposantLigne($formulaireInscription24h->creerLabelFor('email', 'Email *'));
-$formulaireInscription24h->ajouterComposantLigne($formulaireInscription24h->creerInputTexte('email', 'email', '', 1, '', 0));
+$formulaireInscription24h->ajouterComposantLigne($formulaireInscription24h->creerInputTexte('email', 'email', '',1, '', 0));
 $formulaireInscription24h->ajouterComposantTab();
 
 
@@ -21,6 +21,15 @@ $formulaireInscription24h->ajouterComposantLigne($formulaireInscription24h->cree
 $formulaireInscription24h->ajouterComposantLigne($formulaireInscription24h->creerInputMdp('confirmationmdp', 'confirmationmdp', '', '', 0));
 $formulaireInscription24h->ajouterComposantTab();
 
+$formulaireInscription24h->ajouterComposantLigne($formulaireInscription24h->creerInputSubmit('inscription24h',"inscription24h","Valider"));
+$formulaireInscription24h->ajouterComposantTab();
+
 $formulaireInscription24h->creerFormulaire();
+
+if (isset($_POST['numero'])) {
+
+}
+
+
 include_once 'vues/inscription24h.php'
  ?>

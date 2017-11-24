@@ -14,6 +14,7 @@ $entete = array();
 $entete[0] = "Numéro Station";
 $entete[1] = "Nom";
 $entete[2] = "Capacité";
+$entete[3] = "Vélos disponibles";
 
 $lesStations = array();
 

@@ -24,15 +24,9 @@ class velo{
      * @param $DMEC
      */
 
-    public function __construct($num)
+    public function __construct($num, $EtatActuel, $DMEC)
     {
         $this->num = $num;
-    }
-
-    public function __construct($num, $lePlot, $EtatActuel, $DMEC)
-    {
-        $this->num = $num;
-        $this->lePlot = $lePlot;
         $this->EtatActuel = $EtatActuel;
         $this->DMEC = $DMEC;
 

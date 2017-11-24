@@ -1,11 +1,12 @@
 <?php
 class station{
-    public $NUMS;
+    private $NUMS;
     private $EtatActuel;
-    public $nom;
+    private $nom;
     private $situation;
     private $capacite;
     private $numBorne;
+    private $nbVelos;
 
     /**
      * station constructor.
@@ -33,6 +34,7 @@ class station{
             }
         }
     }
+
 
     /**
      * @return mixed

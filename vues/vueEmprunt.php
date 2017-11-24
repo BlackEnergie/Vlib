@@ -6,7 +6,7 @@
 
     <div id="content">
             <?php
-            $formulaireRechercheStation->afficherFormulaire();
+                $formulaireRechercheStation->afficherFormulaire();
             ?>
     </div>
     <div class="tabStations">

@@ -41,7 +41,7 @@
                             $tab .= "<td>" ."</td>";
                             $tab .= "</tr>";
 
-                            
+
                             /*$tab .="<tr><td>$station[0]</td>
                                         <td>$station[2]</td>
                                         <td>$station[4]</td>
@@ -81,10 +81,11 @@
                 $listeVelos = VeloDAO::lesVelos();
                 if(count($listeVelos) > 0){
                     foreach($listeVelos as $velo){
-                        $tab .="<tr><td>$velo[0]</td>
-                                        <td>$velo[1]</td>
-                                        <td>$velo[2]</td>
-                                        <td>$selectEtatVelo</td></tr>";
+                        $tab .="<tr><td>".$velo."[0]</td>";
+                        $tab .="<td>".$velo[1]."</td>";
+                        $tab .="<td>".$velo[2]."</td>";
+                        $tab .="<td>".$selectEtatVelo."</td>";
+                        $tab .="</tr>";
                             }
                 }
                 return $tab;
@@ -118,10 +119,10 @@
                 $listePlots = PlotDAO::lesPlots();
                 if(count($listePlots) > 0){
                     foreach($listePlots as $plot){
-                        $tab .="<tr><td>$plot[0]</td>
-                                        <td>$plot[1]</td>
-                                        <td>$plot[2]</td>
-                                        <td>$selectEtatPlot</td></tr>";
+                        $tab .="<tr><td>".$plot[0]."</td>";
+                        $tab .="<td>".$plot[1]."</td>";
+                        $tab .="<td>".$plot[2]."</td>";
+                        $tab .="<td>".$selectEtatPlot."</td></tr>";
                     }
                 }
                 return $tab;

@@ -16,7 +16,7 @@ $formulaireConnexion->ajouterComposantTab();
 $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputSubmit('submitConnex', 'submitConnex', 'Valider'));
 $formulaireConnexion->ajouterComposantTab();
 
-$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabel($messageErreurConnexion, "messageErreurConnexion"));
+$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabel($messageErreurConnexion));
 $formulaireConnexion->ajouterComposantTab();
 $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputSubmit('inscription', 'inscription', 'Inscrivez-vous !'));
 $formulaireConnexion->ajouterComposantTab();

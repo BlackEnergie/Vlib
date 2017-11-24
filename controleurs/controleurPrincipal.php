@@ -20,6 +20,15 @@ else{
     }
 }
 
+if (isset($_GET['ListeStations'])){
+    $_SESSION['ListeStations']= $_GET['ListeStations'];
+}
+else{
+    if(!isset($_SESSION['ListeStations'])){
+        $_SESSION['ListeStations']="";
+    }
+}
+
 // *****verifie si le login et le mdp inséré correspond a un abonné existant
 // dans la bas de donnee, si il existe, il se connecte et est redirigé a l'accueil
 // sinon son mdp ou login est incorrect et reste sur la page******

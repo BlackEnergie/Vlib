@@ -487,13 +487,18 @@ input[type=submit]{
 }
 
 .tabStations td , th{
-    width: 180px;
+    width: 150px;
     height: 40px;
     border-bottom: 1px solid #ddd;
 }
 
 .tabStations th {
     background-color: rgba(0, 0, 150, 0.3);
+}
+
+.tabStations img{
+    width: 30px;
+    height: 30px;
 }
 
 /* AbonnementsEtTarifs */

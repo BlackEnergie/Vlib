@@ -37,7 +37,14 @@ function tabStation($tab, $entete, $classTab){
             $res .= "<tr><td>";
             $res .= $station->getNUMS() . "</td><td><a href='#'>";
             $res .= $station->getNOMS() . "</a></td><td>";
-            $res .= $station->getCAPACITES() . "</td></tr>";
+            $res .= ($station->getCAPACITES() - $station->getNbVelos()) . "</td><td>";
+            $res .= $station->getNbVelos() . "</td><td>";
+            if($station->getNbVelos() >= 1) {
+                $res .= "<a href = 'index.php?numStation=" . $station->getNUMS() . "'>";
+                $res .= "<img src='images/fleche.jpg' alt='lien'></a></td></tr>";
+            } else{
+                $res .= "</td></tr>";
+            }
         }
     }
     $res .= "</table>";

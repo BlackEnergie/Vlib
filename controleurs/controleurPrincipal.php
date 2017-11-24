@@ -37,6 +37,7 @@ $messageErreurConnexion= '';
 if (isset($_POST['login'],$_POST['mdp'])){
     $unAbonne =new abonne($_POST['login']);
     $_SESSION['identification']=abonneDAO::verification($unAbonne);
+    $_SESSION['abonne'] = $unAbonne;
 
     if($_SESSION['identification']){
         $_SESSION['vlibMP']='accueil';
@@ -52,7 +53,6 @@ if (isset($_POST['login'],$_POST['mdp'])){
             $messageErreurConnexion='Login ou mot de passe incorrect';
         }
     }
-
 }
 
 //************ cree un nouveau menu principal***********

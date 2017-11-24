@@ -7,6 +7,17 @@ class abonne{
     private $datefinAbo;
     private $creditTemps;
     private $montantADebiter;
+    private $velo;
+
+
+    public function emprunterVelo($velo){
+        $res = false;
+        if(!is_null($velo)){
+            $this->velo = $velo;
+            $res = true;
+        }
+        return $res;
+    }
 
     /**
      * abonne constructor.
@@ -28,6 +39,22 @@ class abonne{
                 $this->$method($value);
             }
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVelo()
+    {
+        return $this->velo;
+    }
+
+    /**
+     * @param mixed $velo
+     */
+    public function setVelo($velo)
+    {
+        $this->velo = $velo;
     }
 
     /**

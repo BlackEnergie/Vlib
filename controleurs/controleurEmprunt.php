@@ -15,7 +15,7 @@ $entete[0] = "Numéro Station";
 $entete[1] = "Nom";
 $entete[2] = "Places";
 $entete[3] = "Vélos";
-$entete[4] = "";
+$entete[4] = "Déposer/Emprunter";
 
 $lesStations = array();
 

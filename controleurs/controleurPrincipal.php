@@ -63,7 +63,9 @@ if (isset($_SESSION['identification'])){
     $vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
 }
 elseif (isset($_SESSION['identificationResp'])){
-    $vlibMP->ajouterComposant($vlibMP->creerItemLien("maintenance", "Maintenance"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("maintenanceStation", "MaintenanceStation"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("maintenancePlot", "MaintenancePlot"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("maintenanceVelo", "MaintenanceVelo"));
     $vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
 }
 else {

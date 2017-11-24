@@ -53,7 +53,6 @@ $vlibMP = new Menu("menuPrincipal");
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("accueil", "Accueil"));
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("stations", "Stations"));
 
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'utilisation"));
 
 //********* verifie si l'abonne est connecté
 // il affiche des onglets supplémentaire concernant l'abonne**********
@@ -63,11 +62,14 @@ if (isset($_SESSION['identification'])){
     $vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
 }
 elseif (isset($_SESSION['identificationResp'])){
-    $vlibMP->ajouterComposant($vlibMP->creerItemLien("maintenance", "Maintenance"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("maintenanceStation", "MaintenanceStation"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("maintenancePlot", "MaintenancePlot"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("maintenanceVelo", "MaintenanceVelo"));
     $vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
 }
 else {
   $vlibMP->ajouterComposant($vlibMP->creerItemLien("AbonnementsEtTarifs", "Abonnements et tarifs"));
+  $vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'utilisation"));
   $vlibMP->ajouterComposant($vlibMP->creerItemLien("connexion", "Se connecter"));
 }
 //*********** crée le menu principal

@@ -13,7 +13,9 @@ $formulaireRechercheStation->creerFormulaire();
 $entete = array();
 $entete[0] = "Numéro Station";
 $entete[1] = "Nom";
-$entete[2] = "Capacité";
+$entete[2] = "Places";
+$entete[3] = "Vélos";
+$entete[4] = "";
 
 $lesStations = array();
 

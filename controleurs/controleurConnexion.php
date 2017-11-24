@@ -18,7 +18,7 @@ $formulaireConnexion->ajouterComposantTab();
 
 $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabel($messageErreurConnexion));
 $formulaireConnexion->ajouterComposantTab();
-$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputSubmit('inscription', 'inscription', 'Inscrivez-vous !'));
+$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLien('?vlibMP=AbonnementsEtTarifs','Inscrivez-vous !'));
 $formulaireConnexion->ajouterComposantTab();
 
 $formulaireConnexion->creerFormulaire();

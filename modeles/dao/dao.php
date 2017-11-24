@@ -104,8 +104,48 @@ class StationDAO{
         }
         return $result;
     }
-}
 
+    public static function nbDeVeloDispo($num){
+        $sql = "select count(PLOT.NUM) from PLOT where PLOT.NUMV is not Null and PLOT.NUMS=". $num  ;
+        $nbVelo = DBConnex::getInstance()->queryFetchFirstRow($sql);
+        return $nbVelo[0];
+    }
+}
+class DAOAbonnement{
+
+    public static function chargeLesAbonnement()
+    {
+
+        $sql = "SELECT CODEA,  LIBELLEA,DUREEA,MONTANTA,CREDITTEMPSBASE,  TARIFHORAIRE,CAUTION FROM
+                      ABONNEMENT";
+        $listeAbo = new Abonnements();
+        $resultat = DBConnex::getInstance()->queryFetchAll($sql);
+        if (count($resultat) > 0) {
+            foreach ($resultat as $item) {
+                $unAbo = new Abonnement($item['CODEA'], $item['LIBELLEA'], $item['DUREEA'], $item['MONTANTA'], $item['CREDITTEMPSBASE'], $item['TARIFHORAIRE']
+                    , $item['CAUTION']);
+                $listeAbo->ajouterUnAbonnement($unAbo);
+
+            }
+        }
+        return $listeAbo;
+    }
+
+    public function insertAbonnement($codea, $code, $libellea, $dureea, $montanta, $credittempsbase, $tarifhoraire, $caution)
+    {
+        $sql = "INSERT INTO abonnement (CODEA, CODE, LIBELLEA, DUREEA, MONTANTA, CREDITTEMPSBASE, TARIFHORAIRE, CAUTION) VALUES (:codea,:code,:libellea,:dureea,:montanta,:credittempsbase,:tarifhoraire,:caution)";
+        $req = DBConnex::getInstance()->prepare($sql);
+        $req->bindParam(1, $codea);
+        $req->bindParam(2, $code);
+        $req->bindParam(3, $libellea);
+        $req->bindParam(4, $dureea);
+        $req->bindParam(5, $montanta);
+        $req->bindParam(6, $credittempsbase);
+        $req->bindParam(7, $tarifhoraire);
+        $req->bindParam(8, $caution);
+        $req->execute();
+    }
+}
 Class AbonneDAO{
   /*
 creation des requetes suivante nécessaire :
@@ -113,7 +153,7 @@ creation des requetes suivante nécessaire :
   - modification des donnée d'un abonnée
   - suppression d'un abonnée
 récupéré md5 de championnat afin d'enregistrer le code choisi
-par l'abonné de façon crypté 
+par l'abonné de façon crypté
   */
     public static function verification(abonne $abonne){
         $sql = "select CODEACCES from ABONNE where CODEACCES = '" . $abonne->getCodeAcces() . "' and  CODESECRET =  '" . $_POST['mdp'] ."'";
@@ -122,6 +162,46 @@ par l'abonné de façon crypté
             return null;
         }
         return $login[0];
+    }
+    public static function insertAbonne($codeacces, $codesecret, $codea, $nom, $prenom, $datedebAbon, $datefinabon, $credittemps, $montantadebiter)
+       {
+           $sql = "INSERT INTO abonne (CODEACCES, CODESECRET, CODEA, NOM, PRENOM, DATEDEB_ABON, DATEFINABON, CREDITTEMPS, MONTANTADEBITER) VALUES (:codeacces,:codesecret,:codea,:nom,:prenom,:datedebAbon,:datefinabon,:credittemps,:montantadebiter)";
+           $req = DBConnex::getInstance()->prepare($sql);
+           $req->bindParam(1, $codeacces);
+           $req->bindParam(2, $codesecret);
+           $req->bindParam(3, $codea);
+           $req->bindParam(4, $nom);
+           $req->bindParam(5, $prenom);
+           $req->bindParam(6, $datedebAbon);
+           $req->bindParam(7, $datefinabon);
+           $req->bindParam(8, $credittemps);
+           $req->bindParam(9, $montantadebiter);
+           $req->execute();
+       }
+
+       public function deleteAbonne($codeA, $codeS)
+    {
+        $sql = "DELETE FROM Abonne WHERE CODEACCES = :codeacces  AND CODESECRET = :codesecret";
+        $req = DBConnex::getInstance()->prepare($sql);
+        $req->bindParam(1, $codeA);
+        $req->bindParam(2, $codeS);
+        $req->execute();
+    }
+
+    public function chargerLesAbonne()
+    {
+        $mesAbo = [];
+        $sql = "SELECT CODEACCES,CODESECRET,CODEA,NOM,PRENOM, DATEDEB_ABON,DATEFINABON,CREDITTEMPS ,MONTANTADEBITER
+                    From ABONNE";
+        $resultat = DBConnex::getInstance()->queryFetchAll($sql);
+        if (count($resultat) > 0) {
+            foreach ($resultat as $item) {
+                $unAbo = new Abonne($item['CODEACCES'], $item['CODESECRET'], $item['NOM'], $item['PRENOM'], $item['DATEDEB_ABON'], $item['DATEFINABON']
+                    , $item['CREDITTEMPS'], $item['MONTANTADEBITER'], $item['CODEA']);
+                $mesAbo[] = $unAbo;
+            }
+        }
+        return $mesAbo;
     }
 
     public static function verifEmprunt(abonne $abonne){
@@ -132,6 +212,48 @@ par l'abonné de façon crypté
         }
         return $login[0];
     }
+}
+
+
+Class ResponsableDAO{
+    /*
+  creation des requetes suivante nécessaire :
+    - insertion d'un nouveau responsable
+    - modification des donnée d'un responsable
+    - suppression d'un responsable
+  récupéré md5 de championnat afin d'enregistrer le code choisi
+  par le responsable de façon crypté
+    */
+    public static function verification(responsable $responsable){
+        $sql = "select CODEACCES from RESPONSABLE where CODEACCES = '" . $responsable->getCodeAcces() . "' and  CODESECRET =  '" . $_POST['mdp'] ."'";
+        $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
+        if(empty($login)){
+            return null;
+        }
+        return $login[0];
+    }
+    public static function insertResponsable($codeacces, $codesecret, $codea, $nom, $prenom, $dateEmbauche)
+    {
+        $sql = "INSERT INTO responsable (CODEACCES, CODESECRET, CODEA, NOM, PRENOM, DATEEMBAUCHE) VALUES (:codeacces,:codesecret,:codea,:nom,:prenom,:dateEmbauche)";
+        $req = DBConnex::getInstance()->prepare($sql);
+        $req->bindParam(1, $codeacces);
+        $req->bindParam(2, $codesecret);
+        $req->bindParam(3, $codea);
+        $req->bindParam(4, $nom);
+        $req->bindParam(5, $prenom);
+        $req->bindParam(6, $dateEmbauche);
+        $req->execute();
+    }
+
+    public function deleteResponsable($codeA, $codeS)
+    {
+        $sql = "DELETE FROM responsable WHERE CODEACCES = :codeacces  AND CODESECRET = :codesecret";
+        $req = DBConnex::getInstance()->prepare($sql);
+        $req->bindParam(1, $codeA);
+        $req->bindParam(2, $codeS);
+        $req->execute();
+    }
+
 }
 
 class PlotDAO{

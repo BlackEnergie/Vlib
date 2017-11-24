@@ -487,11 +487,48 @@ input[type=submit]{
 }
 
 .tabStations td , th{
-    width: 180px;
+    width: 150px;
     height: 40px;
     border-bottom: 1px solid #ddd;
 }
 
 .tabStations th {
     background-color: rgba(0, 0, 150, 0.3);
+}
+
+.tabStations img{
+    width: 30px;
+    height: 30px;
+}
+
+/* AbonnementsEtTarifs */
+
+.infos{
+  width: 250px;
+  display: inline-block;
+}
+.fInscript input[type=radio]{
+  margin-left: 30px;
+}
+.fInscript input[type=text]{
+  margin-left: 50px;
+}
+
+.fInscript label{
+  margin-left: 10px;
+}
+
+.fInscript .ligne{
+  margin-bottom: 10px;
+}
+.fInscript24h input[type=text]{
+  margin-left: 50px;
+}
+
+.fInscript24h label{
+  margin-left: 10px;
+}
+
+.fInscript24h .ligne{
+  margin-bottom: 10px;
 }

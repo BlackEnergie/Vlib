@@ -4,6 +4,7 @@ require_once 'fonctions/menu.php';
 require_once 'fonctions/formulaire.php';
 require_once 'fonctions/dispatcher.php';
 require_once 'modeles/dto/abonne.php';
+require_once 'modeles/dto/responsable.php';
 require_once 'modeles/dao/dao.php';
 require_once 'fonctions/fonctions.php';
 
@@ -41,12 +42,17 @@ if (isset($_POST['login'],$_POST['mdp'])){
         $_SESSION['vlibMP']='accueil';
     }
     else{
-        $messageErreurConnexion='Login ou mot de passe incorrect';
-    }
-}
+        $unResponsable =new responsable($_POST['login']);
+        $_SESSION['identificationResp']=responsableDAO::verification($unResponsable);
 
-if(isset($_POST['inscription'])){
-    $_SESSION['vlibMP']='inscription';
+        if($_SESSION['identificationResp']) {
+            $_SESSION['vlibMP'] = 'accueil';
+        }
+        else{
+            $messageErreurConnexion='Login ou mot de passe incorrect';
+        }
+    }
+
 }
 
 //************ cree un nouveau menu principal***********
@@ -55,8 +61,7 @@ $vlibMP = new Menu("menuPrincipal");
 
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("accueil", "Accueil"));
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("stations", "Stations"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("AbonnementsEtTarifs", "Abonnements et tarifs"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'utilisation"));
+
 
 //********* verifie si l'abonne est connecté
 // il affiche des onglets supplémentaire concernant l'abonne**********
@@ -65,7 +70,15 @@ if (isset($_SESSION['identification'])){
     $vlibMP->ajouterComposant($vlibMP->creerItemLien("MonCompte", "Mon compte"));
     $vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
 }
+elseif (isset($_SESSION['identificationResp'])){
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("maintenanceStation", "MaintenanceStation"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("maintenancePlot", "MaintenancePlot"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("maintenanceVelo", "MaintenanceVelo"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se deconnecter"));
+}
 else {
+  $vlibMP->ajouterComposant($vlibMP->creerItemLien("AbonnementsEtTarifs", "Abonnements et tarifs"));
+  $vlibMP->ajouterComposant($vlibMP->creerItemLien("conditions", "Conditions d'utilisation"));
   $vlibMP->ajouterComposant($vlibMP->creerItemLien("connexion", "Se connecter"));
 }
 //*********** crée le menu principal

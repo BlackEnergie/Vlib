@@ -25,7 +25,7 @@
                     /* Création du select pour l'etat des stations */
                     $TabOptions = array("ES", "EM", "HS");
 
-                    $selectEtatStation = Formulaire::creerSelect(etatStation, etatStation, null, $TabOptions);
+                    $selectEtatStation = Formulaire::creerSelect("etatStation", "etatStation", null, $TabOptions);
 
                     /* Création du tableau avec le choix de l'etat des station, le n°, le nom, le nombre de velo disponible, le nombre de places, ... */
                     $tab = "";

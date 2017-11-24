@@ -43,7 +43,7 @@ function tabStation($tab, $entete, $classTab){
                 $res .= "<a href = 'index.php?numStation=" . $station->getNUMS() . "'>";
                 $res .= "<img src='images/fleche.jpg' alt='lien'></a></td></tr>";
             } else{
-                $res .= "</td></tr>";
+                $res .= "<img src='images/erreur.png' alt=''></a></td></tr>";
             }
         }
     }

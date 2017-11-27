@@ -1,4 +1,4 @@
-<?php
+0<?php
 
 
 function tableauHtml($tab,$entete , $classEntete, $classTab, $classLigne){
@@ -35,18 +35,18 @@ function tabStation($tab, $entete, $classTab){
     if (count($tab) > 0){
         foreach($tab as $station){
             $res .= "<tr><td>";
-            $res .= $station->getNUMS() . "</td><td><a href='#'>";
-            $res .= $station->getNOMS() . "</a></td><td>";
+            $res .= $station->getNUMS() . "</td><td>";
+            $res .= $station->getNOMS() . "</td><td>";
             $res .= ($station->getCAPACITES() - $station->getNbVelos()) . "</td><td>";
             $res .= $station->getNbVelos() . "</td><td>";
+            //
             $res .= "<a href = 'index.php?numStationD=" . $station->getNUMS() . "'>";
-            $res .= "<img src='images/deposer.jpg' alt='lien'></a>";
-            if($station->getNbVelos() >= 1) {
+            $res .= "<img src='images/deposer.jpg' alt='lien'></a>   ";
+            if($station->getNbVelos() >= 1) { //Vérifie qu'il y a un vélo sur la station
                 $res .= "<a href='index.php?numStationE=" . $station->getNUMS() . "'>";
                 $res .= "<img src='images/emprunter.jpg' alt=''></a></td></tr>";
             } else{
-                $res .= "<a href='index.php?numStationE=" . $station->getNUMS() . "'>";
-                $res .= "<img src='images/emprunterN.png' alt=''></a></td></tr>";
+                $res .= "<img src='images/emprunterN.png' alt=''></td></tr>";
             }
         }
     }

@@ -422,7 +422,7 @@ input[type=submit]{
 /* Formulaire de recherches de stations */
 
 .contentRecherche {
-    font-size: 0px;
+    font-size: 35px;
     text-align: center;
     vertical-align: middle;
     margin-top: 40px;

@@ -135,26 +135,19 @@ class DAOAbonnement{
     {
         $sql = "INSERT INTO abonnement (CODEA, CODE, LIBELLEA, DUREEA, MONTANTA, CREDITTEMPSBASE, TARIFHORAIRE, CAUTION) VALUES (:codea,:code,:libellea,:dureea,:montanta,:credittempsbase,:tarifhoraire,:caution)";
         $req = DBConnex::getInstance()->prepare($sql);
-        $req->bindParam(1, $codea);
-        $req->bindParam(2, $code);
-        $req->bindParam(3, $libellea);
-        $req->bindParam(4, $dureea);
-        $req->bindParam(5, $montanta);
-        $req->bindParam(6, $credittempsbase);
-        $req->bindParam(7, $tarifhoraire);
-        $req->bindParam(8, $caution);
+        $req->bindParam(':codea',$codea);
+        $req->bindParam(':code', $code);
+        $req->bindParam(':libellea', $libellea);
+        $req->bindParam(':dureea', $dureea);
+        $req->bindParam(':montanta', $montanta);
+        $req->bindParam(':credittempsbase', $credittempsbase);
+        $req->bindParam(':tarifhoraire', $tarifhoraire);
+        $req->bindParam(':caution', $caution);
         $req->execute();
     }
 }
 Class AbonneDAO{
-  /*
-creation des requetes suivante nécessaire :
-  - insertion d'un nouvel abonnée
-  - modification des donnée d'un abonnée
-  - suppression d'un abonnée
-récupéré md5 de championnat afin d'enregistrer le code choisi
-par l'abonné de façon crypté
-  */
+//*********** vérifie si l'abonne qui tente de se connecter a un codeacces et codesecret existant dans la bdd***********
     public static function verification(abonne $abonne){
         $sql = "select CODEACCES from ABONNE where CODEACCES = '" . $abonne->getCodeAcces() . "' and  CODESECRET =  '" . $_POST['mdp'] ."'";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
@@ -163,31 +156,33 @@ par l'abonné de façon crypté
         }
         return $login[0];
     }
+
+//************ requete qui insere un abonné dans la bdd******************
     public static function insertAbonne($codeacces, $codesecret, $codea, $nom, $prenom, $datedebAbon, $datefinabon, $credittemps, $montantadebiter)
        {
            $sql = "INSERT INTO abonne (CODEACCES, CODESECRET, CODEA, NOM, PRENOM, DATEDEB_ABON, DATEFINABON, CREDITTEMPS, MONTANTADEBITER) VALUES (:codeacces,:codesecret,:codea,:nom,:prenom,:datedebAbon,:datefinabon,:credittemps,:montantadebiter)";
            $req = DBConnex::getInstance()->prepare($sql);
-           $req->bindParam(1, $codeacces);
-           $req->bindParam(2, $codesecret);
-           $req->bindParam(3, $codea);
-           $req->bindParam(4, $nom);
-           $req->bindParam(5, $prenom);
-           $req->bindParam(6, $datedebAbon);
-           $req->bindParam(7, $datefinabon);
-           $req->bindParam(8, $credittemps);
-           $req->bindParam(9, $montantadebiter);
+           $req->bindParam(':codeacces',$codeacces);
+           $req->bindParam(':codesecret',$codesecret);
+           $req->bindParam(':codea',$codea);
+           $req->bindParam(':nom', $nom);
+           $req->bindParam(':prenom',$prenom);
+           $req->bindParam(':datedebAbon',$datedebAbon);
+           $req->bindParam(':datefinabon',$datefinabon);
+           $req->bindParam(':credittemps',$credittemps);
+           $req->bindParam(':montantadebiter',$montantadebiter);
            $req->execute();
        }
-
+//************* requete qui suprrime le compte d'un abonné********
        public function deleteAbonne($codeA, $codeS)
     {
         $sql = "DELETE FROM Abonne WHERE CODEACCES = :codeacces  AND CODESECRET = :codesecret";
         $req = DBConnex::getInstance()->prepare($sql);
-        $req->bindParam(1, $codeA);
-        $req->bindParam(2, $codeS);
+        $req->bindParam(':codeacces', $codeA);
+        $req->bindParam(':codesecret', $codeS);
         $req->execute();
     }
-
+//********** charge tous les abonné present dans la bdd********
     public function chargerLesAbonne()
     {
         $mesAbo = [];

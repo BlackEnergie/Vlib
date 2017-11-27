@@ -1,8 +1,9 @@
 <?php
 class velo{
-    private $num;
-    private $lePlot;
-    private $EtatActuel;
+    private $NUMV;
+    private $NUM;
+    private $NUMS;
+    private $ETATV;
     private $DMEC;
 
     public function hydrate(array $donnees)
@@ -26,9 +27,9 @@ class velo{
 
     public function __construct($num, $lePlot, $EtatActuel, $DMEC)
     {
-        $this->num = $num;
-        $this->lePlot = $lePlot;
-        $this->EtatActuel = $EtatActuel;
+        $this->NUMV = $num;
+        $this->NUM = $lePlot;
+        $this->ETATV = $EtatActuel;
         $this->DMEC = $DMEC;
 
     }
@@ -36,49 +37,65 @@ class velo{
     /**
      * @return mixed
      */
-    public function getNum()
+    public function getNUMS()
     {
-        return $this->num;
+        return $this->NUMS;
     }
 
     /**
-     * @param mixed $num
+     * @param mixed $NUMS
      */
-    public function setNum($num)
+    public function setNUMS($NUMS)
     {
-        $this->num = $num;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLePlot()
-    {
-        return $this->lePlot;
-    }
-
-    /**
-     * @param mixed $num
-     */
-    public function setLePlot($lePlot)
-    {
-        $this->lePlot = $lePlot;
+        $this->NUMS = $NUMS;
     }
 
     /**
      * @return mixed
      */
-    public function getEtatActuel()
+    public function getNUMV()
     {
-        return $this->EtatActuel;
+        return $this->NUMV;
     }
 
     /**
-     * @param mixed $EtatActuel
+     * @param mixed $NUMV
      */
-    public function setEtatActuel($EtatActuel)
+    public function setNUMV($NUMV)
     {
-        $this->EtatActuel = $EtatActuel;
+        $this->NUMV = $NUMV;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNUM()
+    {
+        return $this->NUM;
+    }
+
+    /**
+     * @param mixed $num
+     */
+    public function setNUM($NUM)
+    {
+        $this->NUM = $NUM;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getETATV()
+    {
+        return $this->ETATV;
+    }
+
+    /**
+     * @param mixed $ETATV
+     */
+    public function setETATV($ETATV)
+    {
+        $this->ETATV = $ETATV;
     }
 
     /**

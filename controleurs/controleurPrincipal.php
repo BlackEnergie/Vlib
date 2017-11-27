@@ -55,6 +55,16 @@ if (isset($_POST['login'],$_POST['mdp'])){
     }
 }
 
+if (isset($_GET['numStationD'])){
+    $_SESSION['vlibMP'] = 'Deposer';
+    $_SESSION['NumStation'] = $_GET['numStationD'];
+}
+
+if (isset($_GET['numStationE'])){
+    $_SESSION['vlibMP'] = 'Emprunter';
+    $_SESSION['NumStation'] = $_GET['numStationE'];
+}
+
 //************ cree un nouveau menu principal***********
 $vlibMP = new Menu("menuPrincipal");
 

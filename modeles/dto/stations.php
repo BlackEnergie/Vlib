@@ -2,14 +2,21 @@
 
 class stations
 {
-<<<<<<< HEAD
-    $
-=======
+
     private $LesStations = array();
 
     public function __construct($lesStations)
     {
         $this->LesStations = $lesStations;
+    }
+
+    public static function chercher($lesStations ,$id){
+        foreach ($lesStations as $station){
+            if($station->getNUMS() == $id){
+                return $station;
+            }
+        }
+        return false;
     }
 
     /**
@@ -29,5 +36,4 @@ class stations
     }
 
 
->>>>>>> 708067b172fbe29549a5eee4abe60da666c9b726
 }

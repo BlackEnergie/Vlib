@@ -30,7 +30,7 @@ $_SESSION['numero']=$_POST['numero'];
 $_SESSION['email']=$_POST['email'];
 $_SESSION['mdp']=$_POST['mdp'];
 
-AbonneDAO::insertAbonne(mt_rand(1000, 9999),$_SESSION['mdp'],"AAA",NULL,NULL,date("d-m-y"),NULL,NULL,NULL);
+AbonneDAO::insertAbonne(mt_rand(1000, 9999),$_SESSION['mdp'],"AAA",NULL,NULL,date("m-d-y"),NULL,NULL,NULL);
 
 }
 

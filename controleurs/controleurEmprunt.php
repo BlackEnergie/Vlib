@@ -3,6 +3,8 @@
 
 $formulaireRechercheStation = new Formulaire('post', 'index.php', 'fRechercheStation', 'contentRecherche');
 
+$formulaireRechercheStation->ajouterComposantLigne($formulaireRechercheStation->creerLabel('Empruntez ou Déposez un vélo !'));
+$formulaireRechercheStation->ajouterComposantTab();
 $formulaireRechercheStation->ajouterComposantLigne($formulaireRechercheStation->creerInputTexte('rechercheStation', 'rechercheStation', '', 0, 'Rechercher une station', 0));
 $formulaireRechercheStation->ajouterComposantTab();
 $formulaireRechercheStation->ajouterComposantLigne($formulaireRechercheStation->creerInputSubmit('recherche', 'recherche', 'Rechercher'));

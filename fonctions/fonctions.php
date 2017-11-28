@@ -1,4 +1,4 @@
-0<?php
+<?php
 
 
 function tableauHtml($tab,$entete , $classEntete, $classTab, $classLigne){

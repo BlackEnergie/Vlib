@@ -11,11 +11,9 @@ class plot{
      * @param $num
      * @param $etatActuel
      */
-    public function __construct($laStation, $num, $etatActuel)
+    public function __construct()
     {
-        $this->NUMS = $laStation;
-        $this->NUM = $num;
-        $this->ETAT = $etatActuel;
+
     }
 
     public function hydrate(array $donnees)

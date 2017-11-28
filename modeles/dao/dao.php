@@ -262,11 +262,11 @@ class PlotDAO{
 
     public static function lesPlots(){
         $result = array();
-        $sql = "select * from PLOT order by NUM" ;
+        $sql = "select * from PLOT order by NUMS" ;
         $liste = DBConnex::getInstance()->queryFetchAll($sql);
         if(!empty($liste)){
             foreach($liste as $plot){
-                $uneStation = new plot($plot['numPlot'],$plot['nomStation'] );
+                $uneStation = new plot();
                 $uneStation->hydrate($plot);
                 $result[] = $uneStation;
             }
@@ -302,3 +302,36 @@ class VeloDAO{
         $sql = "ALTER TABLE ";
     }
 }
+
+
+//$lesStations = StationDAO::lesStations();
+
+function addPlot($Stations){
+    foreach ($Stations as $uneStation){
+        for ($i = 1; $i <= $uneStation->getCAPACITES() ; $i++){
+           $sql = "INSERT INTO `plot` (`NUMS`, `NUM`, `NUMV`, `ETAT`) VALUES ('". $uneStation->getNUMS() ."', '" . $i . "', NULL, 'ES')";
+           DBConnex::getInstance()->insert($sql);
+        }
+    }
+}
+
+//addPlot($lesStations);
+
+//$lesPlots = PlotDAO::lesPlots();
+
+function addVelo($Plots){
+    $i = 8;
+    foreach ($Plots as $plot) {
+        $sql = "INSERT INTO `velo` (`NUMV`, `NUMS`, `NUM`, `ETATV`, `DMEC`) VALUES ('" . $i . "', '" . $plot->getNUMS() . "', '" . $plot->getNUM() . "', 'ES', '2015-10-10');";
+        DBConnex::getInstance()->insert($sql);
+        $sql = "UPDATE `plot` SET `NUMV` = '" . $i . "' WHERE `plot`.`NUMS` = '" . $plot->getNUMS() . "' AND `plot`.`NUM` = '" . $plot->getNUM() . "';";
+        DBConnex::getInstance()->update($sql);
+        $i++;
+    }
+}
+
+//addVelo($lesPlots);
+
+
+
+

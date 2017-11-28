@@ -6,7 +6,6 @@
 	    <div class="texteAccueil">
 	        <h1>Vlib</h1>
 	        <img src="images/vlib.jpg" class="vlib"/>
-
 						<div class="bas">
 						    <?php  include 'bas.php' ;?>
 						</div>

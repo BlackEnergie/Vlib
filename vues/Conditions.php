@@ -143,5 +143,5 @@ Ils sont la principale cause d’accident à vélo alors prudence ! L’angle mo
     <div id="bas">
         <?php  include 'bas.php' ;?>
   </div>
-
+</div>
 </div>

@@ -105,6 +105,14 @@ class StationDAO{
         return $result;
     }
 
+    public static function rechercherID($id){
+        $sql = "select NUMS, NOMS, CAPACITES from station where NUMS='" . $id . "';";
+        $station = DBConnex::getInstance()->queryFetchFirstRow($sql);
+        $uneStation = new station($station['NUMS']);
+        $uneStation->hydrate($station);
+        return $uneStation;
+    }
+
     public static function nbDeVeloDispo($num){
         $sql = "select count(PLOT.NUM) from PLOT where PLOT.NUMV is not Null and PLOT.NUMS=". $num  ;
         $nbVelo = DBConnex::getInstance()->queryFetchFirstRow($sql);
@@ -290,7 +298,21 @@ class VeloDAO{
         $liste = DBConnex::getInstance()->queryFetchAll($sql);
         if(!empty($liste)){
             foreach($liste as $velo){
-                $unVelo = new velo($velo['NUMV']);
+                $unVelo = new velo();
+                $unVelo->hydrate($velo);
+                $result[] = $unVelo;
+            }
+        }
+        return $result;
+    }
+
+    public static function lesVelosStation($idStation){
+        $result = array();
+        $sql = "select * from VELO WHERE NUMS='" . $idStation . "' order by NUMV " ;
+        $liste = DBConnex::getInstance()->queryFetchAll($sql);
+        if(!empty($liste)){
+            foreach($liste as $velo){
+                $unVelo = new velo();
                 $unVelo->hydrate($velo);
                 $result[] = $unVelo;
             }
@@ -299,10 +321,16 @@ class VeloDAO{
     }
 
     public static function emprunterVelo(velo $velo){
-        $sql = "ALTER TABLE ";
+        $sql = "UPDATE velo SET 'NUMS'= null, 'NUM'= null WHERE NUMV='' ";
     }
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//      Fonctions de remplissage de la base de données
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //$lesStations = StationDAO::lesStations();
 

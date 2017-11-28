@@ -36,6 +36,11 @@ class Formulaire{
 		return $composant;
 	}
 
+    public function creerLabelId($unLabel, $unId){
+        $composant = "<label id='". $unId ."'>" . $unLabel . "</label>";
+        return $composant;
+    }
+
 	public function creerInputTexte($unNom, $unId, $uneValue , $required , $placeholder , $pattern){
 		$composant = "<input type = 'text' name = '" . $unNom . "' id = '" . $unId . "' ";
 		if (!empty($uneValue)){
@@ -88,6 +93,15 @@ public function creerInputRadio($unnom, $unevaleur,$unLabel){
 		$composant .= "</select></td></tr>";
 		return $composant;
 	}
+
+    public function creerSelectVelos($unNom, $unId, $options){
+        $composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
+        foreach ($options as $option){
+            $composant .= "<option value ='" . $option->getNUMV() . "'>n° " . $option->getNUMV() . "</option>" ;
+        }
+        $composant .= "</select></td></tr>";
+        return $composant;
+    }
 
 	public function creerInputSubmit($unNom, $unId, $uneValue){
 		$composant = "<input type = 'submit' name = '" . $unNom . "' id = '" . $unId . "' ";

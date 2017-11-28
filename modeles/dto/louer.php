@@ -1,10 +1,17 @@
 <?php
-class velo{
+
+class louer
+{
+    private $CODEACCES;
     private $NUMV;
-    private $NUM;
-    private $NUMS;
-    private $ETATV;
-    private $DMEC;
+    private $HEURE;
+    private $DATEM;
+    private $TEMPSLOC;
+
+    public function __construct()
+    {
+
+    }
 
     public function hydrate(array $donnees)
     {
@@ -19,31 +26,19 @@ class velo{
     }
 
     /**
-     * velo constructor.
-     * @param $num
-     * @param $EtatActuel
-     * @param $DMEC
-     */
-
-    public function __construct()
-    {
-
-    }
-
-    /**
      * @return mixed
      */
-    public function getNUMS()
+    public function getCODEACCES()
     {
-        return $this->NUMS;
+        return $this->CODEACCES;
     }
 
     /**
-     * @param mixed $NUMS
+     * @param mixed $CODEACCES
      */
-    public function setNUMS($NUMS)
+    public function setCODEACCES($CODEACCES)
     {
-        $this->NUMS = $NUMS;
+        $this->CODEACCES = $CODEACCES;
     }
 
     /**
@@ -65,49 +60,49 @@ class velo{
     /**
      * @return mixed
      */
-    public function getNUM()
+    public function getHEURE()
     {
-        return $this->NUM;
+        return $this->HEURE;
     }
 
     /**
-     * @param mixed $num
+     * @param mixed $HEURE
      */
-    public function setNUM($NUM)
+    public function setHEURE($HEURE)
     {
-        $this->NUM = $NUM;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getETATV()
-    {
-        return $this->ETATV;
-    }
-
-    /**
-     * @param mixed $ETATV
-     */
-    public function setETATV($ETATV)
-    {
-        $this->ETATV = $ETATV;
+        $this->HEURE = $HEURE;
     }
 
     /**
      * @return mixed
      */
-    public function getDMEC()
+    public function getDATEM()
     {
-        return $this->DMEC;
+        return $this->DATEM;
     }
 
     /**
-     * @param mixed $DMEC
+     * @param mixed $DATEM
      */
-    public function setDMEC($DMEC)
+    public function setDATEM($DATEM)
     {
-        $this->DMEC = $DMEC;
+        $this->DATEM = $DATEM;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTEMPSLOC()
+    {
+        return $this->TEMPSLOC;
+    }
+
+    /**
+     * @param mixed $TEMPSLOC
+     */
+    public function setTEMPSLOC($TEMPSLOC)
+    {
+        $this->TEMPSLOC = $TEMPSLOC;
     }
 
 

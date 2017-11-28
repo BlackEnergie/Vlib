@@ -1,9 +1,9 @@
 <?php
 class plot{
-    private $laStation;
-    private $num;
-    private $etatActuel;
-
+    private $NUMS;
+    private $NUM;
+    private $ETAT;
+    private $NUMV;
 
     /**
      * plot constructor.
@@ -13,9 +13,9 @@ class plot{
      */
     public function __construct($laStation, $num, $etatActuel)
     {
-        $this->laStation = $laStation;
-        $this->num = $num;
-        $this->etatActuel = $etatActuel;
+        $this->NUMS = $laStation;
+        $this->NUM = $num;
+        $this->ETAT = $etatActuel;
     }
 
     public function hydrate(array $donnees)
@@ -33,49 +33,66 @@ class plot{
     /**
      * @return mixed
      */
-    public function getLaStation()
+    public function getNUMV()
     {
-        return $this->laStation;
+        return $this->NUMV;
+    }
+
+    /**
+     * @param mixed $NUMV
+     */
+    public function setNUMV($NUMV)
+    {
+        $this->NUMV = $NUMV;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getNUMS()
+    {
+        return $this->NUMS;
     }
 
     /**
      * @param mixed $numStation
      */
-    public function setLaStation($numStation)
+    public function setNUMS($laStation)
     {
-        $this->laStation = $laStation;
+        $this->NUMS = $laStation;
     }
 
     /**
      * @return mixed
      */
-    public function getNum()
+    public function getNUM()
     {
-        return $this->num;
+        return $this->NUM;
     }
 
     /**
-     * @param mixed $num
+     * @param mixed $NUM
      */
-    public function setNum($num)
+    public function setNUM($NUM)
     {
-        $this->num = $num;
+        $this->NUM = $NUM;
     }
 
     /**
      * @return mixed
      */
-    public function getEtatActuel()
+    public function getETAT()
     {
-        return $this->etatActuel;
+        return $this->ETAT;
     }
 
     /**
-     * @param mixed $etatActuel
+     * @param mixed $ETAT
      */
-    public function setEtatActuel($etatActuel)
+    public function setETAT($ETAT)
     {
-        $this->etatActuel = $etatActuel;
+        $this->ETAT = $ETAT;
     }
 
 

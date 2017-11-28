@@ -19,6 +19,16 @@ class abonne{
         return $res;
     }
 
+    public function deposerVelo($plot){
+        $res = false;
+        if(!is_null($this->velo)){
+            $plot->setNUMV($this->velo);
+            $this->velo = null;
+            $res = true;
+        }
+        return $res;
+    }
+
     /**
      * abonne constructor.
      * @param $codeAcces

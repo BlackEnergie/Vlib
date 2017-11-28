@@ -255,7 +255,7 @@ class PlotDAO{
 
 
     public static function lire(plot $plot){
-        $sql = "select * from PLOT where NUM='" . $plot->getNum() ."'";
+        $sql = "select * from PLOT where NUM='" . $plot->getNUM() ."'";
         $plot = DBConnex::getInstance()->queryFetchFirstRow($sql);
         return $plot;
     }
@@ -279,7 +279,7 @@ class PlotDAO{
 class VeloDAO{
 
     public static function lire(velo $velo){
-        $sql = "select * from VELO where NUMV='" . $velo->getNum() ."'";
+        $sql = "select * from VELO where NUMV='" . $velo->getNUMV() ."'";
         $velo = DBConnex::getInstance()->queryFetchAll($sql);
         return $velo;
     }

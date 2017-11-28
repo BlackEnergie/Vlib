@@ -1,9 +1,8 @@
-
 <div id="conteneur">
 
 	<div id='header'>
 		<?php include 'haut.php' ;?>
-</div>
+	</div>
 
 <div id="content">
 <p>
@@ -143,6 +142,6 @@ Ils sont la principale cause d’accident à vélo alors prudence ! L’angle mo
 
     <div id="bas">
         <?php  include 'bas.php' ;?>
-    </div>
+  </div>
 
 </div>

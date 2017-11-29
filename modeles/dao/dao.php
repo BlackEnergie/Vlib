@@ -119,6 +119,20 @@ class StationDAO{
         return $nbVelo[0];
     }
 }
+
+class louerDAO{
+
+    public static function louerVelo($unIdVelo, $unIdAbonne, $unIdStation, $codeSecret, $date){
+        $sql = "UPDATE `velo` SET `NUMS` = NULL, `NUM` = NULL WHERE `velo`.`NUMV` = '". $unIdVelo ."';";
+        DBConnex::getInstance()->update($sql);
+        $sql = "UPDATE `plot` SET `NUMV` = NULL WHERE `plot`.`NUMS` = '". $unIdStation ."' AND `plot`.`NUM` = '". $unIdVelo ."';";
+        DBConnex::getInstance()->update($sql);
+        $sql = "INSERT INTO `louer` (`CODEACCES`, `CODESECRET`, `NUMV`, `HEURE`, `DATEM`, `TEMPSLOC`) VALUES ('". $unIdAbonne ."', '". $codeSecret ."', '". $unIdVelo ."', NULL , '". $date ."', NULL);";
+        DBConnex::getInstance()->insert($sql);
+    }
+}
+
+
 class DAOAbonnement{
 
     public static function chargeLesAbonnement()
@@ -158,6 +172,15 @@ Class AbonneDAO{
 //*********** vérifie si l'abonne qui tente de se connecter a un codeacces et codesecret existant dans la bdd***********
     public static function verification(abonne $abonne){
         $sql = "select CODEACCES from ABONNE where CODEACCES = '" . $abonne->getCODEACCES() . "' and  CODESECRET =  '" . $_POST['mdp'] ."'";
+        $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
+        if(empty($login)){
+            return null;
+        }
+        return $login[0];
+    }
+
+    public static function verificationEmprunt(abonne $abonne){
+        $sql = "select CODEACCES from ABONNE where CODEACCES = '" . $abonne->getCODEACCES() . "' and  CODESECRET =  '" . $_POST['codeSecret'] ."'";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
         if(empty($login)){
             return null;

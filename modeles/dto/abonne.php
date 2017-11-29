@@ -39,6 +39,7 @@ class abonne{
     public function __construct($codeAcces)
     {
         $this->CODEACCES = $codeAcces;
+        $this->VELOS = 0;
     }
 
     public function hydrate(array $donnees)

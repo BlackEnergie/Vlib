@@ -122,13 +122,15 @@ class StationDAO{
 
 class louerDAO{
 
-    public static function louerVelo($unIdVelo, $unIdAbonne, $unIdStation, $codeSecret, $date){
+    public static function louerVelo($unIdVelo, $unIdAbonne, $unIdStation, $codeSecret, $date, $heure){
+        $res = true;
         $sql = "UPDATE `velo` SET `NUMS` = NULL, `NUM` = NULL WHERE `velo`.`NUMV` = '". $unIdVelo ."';";
-        DBConnex::getInstance()->update($sql);
+        $res = DBConnex::getInstance()->update($sql);
         $sql = "UPDATE `plot` SET `NUMV` = NULL WHERE `plot`.`NUMS` = '". $unIdStation ."' AND `plot`.`NUM` = '". $unIdVelo ."';";
-        DBConnex::getInstance()->update($sql);
-        $sql = "INSERT INTO `louer` (`CODEACCES`, `CODESECRET`, `NUMV`, `HEURE`, `DATEM`, `TEMPSLOC`) VALUES ('". $unIdAbonne ."', '". $codeSecret ."', '". $unIdVelo ."', NULL , '". $date ."', NULL);";
-        DBConnex::getInstance()->insert($sql);
+        $res = DBConnex::getInstance()->update($sql);
+        $sql = "INSERT INTO `louer` (`CODEACCES`, `CODESECRET`, `NUMV`, `HEURE`, `DATEM`, `TEMPSLOC`) VALUES ('". $unIdAbonne ."', '". $codeSecret ."', '". $unIdVelo ."', '" . $heure . "', '". $date ."', NULL);";
+        $res = DBConnex::getInstance()->insert($sql);
+        return $res;
     }
 }
 

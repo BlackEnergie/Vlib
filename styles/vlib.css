@@ -597,3 +597,20 @@ input[type=submit]{
     font-size: 30px;
     font-weight: bold;
 }
+
+.vueEmprunt input[type=password]{
+    width: 87px;
+    text-align: center;
+}
+
+.vueEmprunt #ok{
+    font-size : 25px;
+    font-weight: bold;
+    color: #2dd52c;
+}
+
+.vueEmprunt #echec{
+    font-size : 25px;
+    font-weight: bold;
+    color: #d53329;
+}

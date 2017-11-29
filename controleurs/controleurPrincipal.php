@@ -55,6 +55,19 @@ if (isset($_POST['login'],$_POST['mdp'])){
     }
 }
 
+
+////////////////////////////////////////////////////////////
+//////////
+////////// Charge les abonnements dans un variable de session
+/// $_SESSION['abonnements'][0] --> 1an
+/// $_SESSION['abonnements'][1] --> 1mois
+/// $_SESSION['abonnements'][2] --> 24h
+//////////
+////////////////////////////////////////////////////////////
+if(!isset($_SESSION['abonnements'])){
+    $_SESSION['abonnements'] = AbonnementsDAO::lesAbonnements();
+}
+
 if (isset($_GET['numStationD'])){
     $_SESSION['vlibMP'] = 'Deposer';
     $_SESSION['NumStation'] = $_GET['numStationD'];

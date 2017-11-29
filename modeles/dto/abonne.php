@@ -1,19 +1,21 @@
 <?php
 class abonne{
-    private $codeAcces;
-    private $nom;
-    private $prenom;
-    private $dateDebutAbo;
-    private $datefinAbo;
-    private $creditTemps;
-    private $montantADebiter;
-    private $velo;
+    private $CODEACCES;
+    private $NOM;
+    private $PRENOM;
+    private $DATEDEB_ABON;
+    private $DATEFINABON;
+    private $CREDITTEMPS;
+    private $MONTANTADEBITER;
+    private $VELOS;
+    private $ABONNEMENT;
+
 
 
     public function emprunterVelo($velo){
         $res = false;
         if(!is_null($velo)){
-            $this->velo = $velo;
+            $this->VELOS = $velo;
             $res = true;
         }
         return $res;
@@ -21,9 +23,9 @@ class abonne{
 
     public function deposerVelo($plot){
         $res = false;
-        if(!is_null($this->velo)){
-            $plot->setNUMV($this->velo);
-            $this->velo = null;
+        if(!is_null($this->VELOS)){
+            $plot->setNUMV($this->VELOS);
+            $this->VELOS = null;
             $res = true;
         }
         return $res;
@@ -36,7 +38,7 @@ class abonne{
 
     public function __construct($codeAcces)
     {
-        $this->codeAcces = $codeAcces;
+        $this->CODEACCES = $codeAcces;
     }
 
     public function hydrate(array $donnees)
@@ -54,129 +56,145 @@ class abonne{
     /**
      * @return mixed
      */
-    public function getVelo()
+    public function getVELOS()
     {
-        return $this->velo;
+        return $this->VELOS;
     }
 
     /**
-     * @param mixed $velo
+     * @param mixed $VELOS
      */
-    public function setVelo($velo)
+    public function setVELOS($VELOS)
     {
-        $this->velo = $velo;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCodeAcces()
-    {
-        return $this->codeAcces;
-    }
-
-    /**
-     * @param mixed $codeAcces
-     */
-    public function setCodeAcces($codeAcces)
-    {
-        $this->codeAcces = $codeAcces;
+        $this->VELOS = $VELOS;
     }
 
     /**
      * @return mixed
      */
-    public function getNom()
+    public function getABONNEMENT()
     {
-        return $this->nom;
+        return $this->ABONNEMENT;
     }
 
     /**
-     * @param mixed $nom
+     * @param mixed $ABONNEMENT
      */
-    public function setNom($nom)
+    public function setABONNEMENT($ABONNEMENT)
     {
-        $this->nom = $nom;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    /**
-     * @param mixed $prenom
-     */
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
+        $this->ABONNEMENT = $ABONNEMENT;
     }
 
     /**
      * @return mixed
      */
-    public function getDateDebutAbo()
+    public function getCODEACCES()
     {
-        return $this->dateDebutAbo;
+        return $this->CODEACCES;
     }
 
     /**
-     * @param mixed $dateDebutAbo
+     * @param mixed $CODEACCES
      */
-    public function setDateDebutAbo($dateDebutAbo)
+    public function setCODEACCES($CODEACCES)
     {
-        $this->dateDebutAbo = $dateDebutAbo;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDatefinAbo()
-    {
-        return $this->datefinAbo;
-    }
-
-    /**
-     * @param mixed $datefinAbo
-     */
-    public function setDatefinAbo($datefinAbo)
-    {
-        $this->datefinAbo = $datefinAbo;
+        $this->CODEACCES = $CODEACCES;
     }
 
     /**
      * @return mixed
      */
-    public function getCreditTemps()
+    public function getNOM()
     {
-        return $this->creditTemps;
+        return $this->NOM;
     }
 
     /**
-     * @param mixed $creditTemps
+     * @param mixed $NOM
      */
-    public function setCreditTemps($creditTemps)
+    public function setNOM($NOM)
     {
-        $this->creditTemps = $creditTemps;
+        $this->NOM = $NOM;
     }
 
     /**
      * @return mixed
      */
-    public function getMontantADebiter()
+    public function getPRENOM()
     {
-        return $this->montantADebiter;
+        return $this->PRENOM;
+    }
+
+    /**
+     * @param mixed $PRENOM
+     */
+    public function setPRENOM($PRENOM)
+    {
+        $this->PRENOM = $PRENOM;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDATEDEBABON()
+    {
+        return $this->DATEDEB_ABON;
+    }
+
+    /**
+     * @param mixed $DATEDEB_ABON
+     */
+    public function setDATEDEBABON($DATEDEB_ABON)
+    {
+        $this->DATEDEB_ABON = $DATEDEB_ABON;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDATEFINABON()
+    {
+        return $this->DATEFINABON;
+    }
+
+    /**
+     * @param mixed $DATEFINABON
+     */
+    public function setDATEFINABON($DATEFINABON)
+    {
+        $this->DATEFINABON = $DATEFINABON;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCREDITTEMPS()
+    {
+        return $this->CREDITTEMPS;
+    }
+
+    /**
+     * @param mixed $CREDITTEMPS
+     */
+    public function setCREDITTEMPS($CREDITTEMPS)
+    {
+        $this->CREDITTEMPS = $CREDITTEMPS;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMONTANTADEBITER()
+    {
+        return $this->MONTANTADEBITER;
     }
 
     /**
      * @param mixed $numTelephone
      */
-    public function setMontantADebiter($montantADebiter)
+    public function setMONTANTADEBITER($MONTANTADEBITER)
     {
-        $this->montantADebiter = $montantADebiter;
+        $this->MONTANTADEBITER = $MONTANTADEBITER;
 
 
 

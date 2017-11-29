@@ -1,14 +1,14 @@
 <?php
 class abonnement
 {
-    private $code;
-    private $libelle;
-    private $duree;
-    private $montant;
-    private $creditTempsBase;
-    private $tarifHoraire;
-    private $caution;
-    private $type;
+    private $CODEA;
+    private $LIBELLEA;
+    private $DUREEA;
+    private $MONTANTA;
+    private $CREDITTEMPSBASE;
+    private $TARIFHORAIRE;
+    private $CAUTION;
+    private $TYPEA;
 
     /**
      * abonnement constructor.
@@ -21,16 +21,8 @@ class abonnement
      * @param $caution
      * @param $type
      */
-    public function __construct($code, $libelle, $duree, $montant, $creditTempsBase, $tarifHoraire, $caution, $type)
+    public function __construct()
     {
-        $this->code = $code;
-        $this->libelle = $libelle;
-        $this->duree = $duree;
-        $this->montant = $montant;
-        $this->creditTempsBase = $creditTempsBase;
-        $this->tarifHoraire = $tarifHoraire;
-        $this->caution = $caution;
-        $this->type = $type;
     }
 
     public function hydrate(array $donnees)
@@ -48,129 +40,129 @@ class abonnement
     /**
      * @return mixed
      */
-    public function getCode()
+    public function getCODEA()
     {
-        return $this->code;
+        return $this->CODEA;
     }
 
     /**
-     * @param mixed $code
+     * @param mixed $CODEA
      */
-    public function setCode($code)
+    public function setCODEA($CODEA)
     {
-        $this->code = $code;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLibelle()
-    {
-        return $this->libelle;
-    }
-
-    /**
-     * @param mixed $libelle
-     */
-    public function setLibelle($libelle)
-    {
-        $this->libelle = $libelle;
+        $this->CODEA = $CODEA;
     }
 
     /**
      * @return mixed
      */
-    public function getDuree()
+    public function getLIBELLEA()
     {
-        return $this->duree;
+        return $this->LIBELLEA;
     }
 
     /**
-     * @param mixed $duree
+     * @param mixed $LIBELLEA
      */
-    public function setDuree($duree)
+    public function setLIBELLEA($LIBELLEA)
     {
-        $this->duree = $duree;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMontant()
-    {
-        return $this->montant;
-    }
-
-    /**
-     * @param mixed $montant
-     */
-    public function setMontant($montant)
-    {
-        $this->montant = $montant;
+        $this->LIBELLEA = $LIBELLEA;
     }
 
     /**
      * @return mixed
      */
-    public function getCreditTempsBase()
+    public function getDUREEA()
     {
-        return $this->creditTempsBase;
+        return $this->DUREEA;
     }
 
     /**
-     * @param mixed $creditTempsBase
+     * @param mixed $DUREEA
      */
-    public function setCreditTempsBase($creditTempsBase)
+    public function setDUREEA($DUREEA)
     {
-        $this->creditTempsBase = $creditTempsBase;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTarifHoraire()
-    {
-        return $this->tarifHoraire;
-    }
-
-    /**
-     * @param mixed $tarifHoraire
-     */
-    public function setTarifHoraire($tarifHoraire)
-    {
-        $this->tarifHoraire = $tarifHoraire;
+        $this->DUREEA = $DUREEA;
     }
 
     /**
      * @return mixed
      */
-    public function getCaution()
+    public function getMONTANTA()
     {
-        return $this->caution;
+        return $this->MONTANTA;
     }
 
     /**
-     * @param mixed $caution
+     * @param mixed $MONTANTA
      */
-    public function setCaution($caution)
+    public function setMONTANTA($MONTANTA)
     {
-        $this->caution = $caution;
+        $this->MONTANTA = $MONTANTA;
     }
 
     /**
      * @return mixed
      */
-    public function getType()
+    public function getCREDITTEMPSBASE()
     {
-        return $this->type;
+        return $this->CREDITTEMPSBASE;
     }
 
     /**
-     * @param mixed $type
+     * @param mixed $CREDITTEMPSBASE
      */
-    public function setType($type)
+    public function setCREDITTEMPSBASE($CREDITTEMPSBASE)
     {
-        $this->type = $type;
+        $this->CREDITTEMPSBASE = $CREDITTEMPSBASE;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTARIFHORAIRE()
+    {
+        return $this->TARIFHORAIRE;
+    }
+
+    /**
+     * @param mixed $TARIFHORAIRE
+     */
+    public function setTARIFHORAIRE($TARIFHORAIRE)
+    {
+        $this->TARIFHORAIRE = $TARIFHORAIRE;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCAUTION()
+    {
+        return $this->CAUTION;
+    }
+
+    /**
+     * @param mixed $CAUTION
+     */
+    public function setCAUTION($CAUTION)
+    {
+        $this->CAUTION = $CAUTION;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTYPEA()
+    {
+        return $this->TYPEA;
+    }
+
+    /**
+     * @param mixed $TYPEA
+     */
+    public function setTYPEA($TYPEA)
+    {
+        $this->TYPEA = $TYPEA;
     }
 
 

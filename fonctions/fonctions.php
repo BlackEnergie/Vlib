@@ -28,7 +28,7 @@ function tableauHtml($tab,$entete , $classEntete, $classTab, $classLigne){
 function tabStation($tab, $entete, $classTab){
     if(isset($_SESSION['abonne'])) {
         $Abonne = $_SESSION['abonne'];
-        $leVelo = $Abonne->getVelo();
+        $leVelo = $Abonne->getVELOS();
     } else{
         $leVelo = null;
     }

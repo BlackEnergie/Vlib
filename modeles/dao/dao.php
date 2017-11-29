@@ -157,7 +157,7 @@ class DAOAbonnement{
 Class AbonneDAO{
 //*********** vérifie si l'abonne qui tente de se connecter a un codeacces et codesecret existant dans la bdd***********
     public static function verification(abonne $abonne){
-        $sql = "select CODEACCES from ABONNE where CODEACCES = '" . $abonne->getCodeAcces() . "' and  CODESECRET =  '" . $_POST['mdp'] ."'";
+        $sql = "select CODEACCES from ABONNE where CODEACCES = '" . $abonne->getCODEACCES() . "' and  CODESECRET =  '" . $_POST['mdp'] ."'";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
         if(empty($login)){
             return null;
@@ -208,7 +208,7 @@ Class AbonneDAO{
     }
 
     public static function verifEmprunt(abonne $abonne){
-        $sql = "select NOM, PRENOM from ABONNE WHERE CODEACCES ='" . $abonne->getCodeAcces() . "'and CODESECRET = '" . $_POST['codeSecret'] . "'" ;
+        $sql = "select NOM, PRENOM from ABONNE WHERE CODEACCES ='" . $abonne->getCODEACCES() . "'and CODESECRET = '" . $_POST['codeSecret'] . "'" ;
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
         if(empty($login)){
             return null;
@@ -322,6 +322,23 @@ class VeloDAO{
 
     public static function emprunterVelo(velo $velo){
         $sql = "UPDATE velo SET 'NUMS'= null, 'NUM'= null WHERE NUMV='' ";
+    }
+}
+
+class AbonnementsDAO{
+
+    public static function lesAbonnements(){
+        $result = array();
+        $sql = "select * from abonnement" ;
+        $liste = DBConnex::getInstance()->queryFetchAll($sql);
+        if(!empty($liste)){
+            foreach($liste as $abo){
+                $unAbo = new abonnement();
+                $unAbo->hydrate($abo);
+                $result[] = $unAbo;
+            }
+        }
+        return $result;
     }
 }
 

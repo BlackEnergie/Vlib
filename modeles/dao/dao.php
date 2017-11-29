@@ -360,6 +360,11 @@ function addVelo($Plots){
 
 //addVelo($lesPlots);
 
+function ajouterAbonnements(){
+    $sql = "INSERT INTO `abonnement` VALUES ('24h', '24 heures', 24 , 1.6 , 24 , 2 ,200, NULL),('1mois', '1 mois', 30, 15, 720, 1, 200, NULL), ('1an', '1 an', 365, 35, 21900, 1, 200 , NULL);";
+    DBConnex::getInstance()->insert($sql);
+}
 
+//ajouterAbonnements();
 
 

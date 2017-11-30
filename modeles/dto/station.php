@@ -9,18 +9,11 @@ class station{
     private $nbVelos;
 
     /**
-     * station constructor.
-     * @param $num
-     * @param $EtatActuel
-     * @param $nom
-     * @param $situation
-     * @param $capacite
-     * @param $numBorne
      */
     public function __construct($num)
     {
         $this->NUMS = $num;
-        $this->nbVelos = StationDAO::nbDeVeloDispo($num);
+        StationDAO::nbDeVeloDispo($this);
     }
 
 

@@ -113,15 +113,15 @@ class StationDAO{
         return $uneStation;
     }
 
-    public static function nbDeVeloDispo($num){
-        $sql = "select count(PLOT.NUM) from PLOT where PLOT.NUMV is not Null and PLOT.NUMS=". $num  ;
+    public static function nbDeVeloDispo(station $station){
+        $sql = "select count(PLOT.NUM) from PLOT where PLOT.NUMV is not Null and PLOT.NUMS= '". $station->getNUMS()."'";
         $nbVelo = DBConnex::getInstance()->queryFetchFirstRow($sql);
-        return $nbVelo[0];
+        $station->setNbVelos($nbVelo[0]);
     }
 
     public static function plotsDiponiblesStation(station $station){
         $res = array();
-        $sql = "select * from plot WHERE NUMV is null and NUMS = '" . $station->getNUMS() . "';";
+        $sql = "select * from plot WHERE NUMV is null and NUMS = '" . $station->getNUMS() . "' order by NUM;";
         $liste = DBConnex::getInstance()->queryFetchAll($sql);
         foreach ($liste as $plot){
             $unPlot = new plot();
@@ -147,7 +147,7 @@ class louerDAO{
 
     public static function deposerVelo($unIdVelo, $unIdAbonne, $unIdStation, $unPlot , $heure){
         $res = true;
-
+        $sql = "";
     }
 
 }

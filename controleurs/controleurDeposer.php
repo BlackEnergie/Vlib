@@ -5,6 +5,7 @@ include_once 'modeles/dto/stations.php';
 $lesStations = StationDAO::lesStations();
 $laStation = stations::chercher($lesStations , $_SESSION['NumStation']);
 $lesPlotsDispo = StationDAO::plotsDiponiblesStation($laStation);
+AbonneDAO::velosEmpruntes($_SESSION['abonne']);
 
 $formulaireDeposer = new Formulaire('post', 'index.php', 'deposer', 'formEmprunt');
 
@@ -16,7 +17,7 @@ $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerLabelId("Vél
 $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerSelectVelos("selectVelo","selectVelo" ,$_SESSION['abonne']->getVELOS()));
 $formulaireDeposer->ajouterComposantTab();
 $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerLabelId("Plots disponibles :", "text"));
-$formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerSelectVelos("selectVelo","selectVelo" ,$lesPlotsDispo));
+$formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerSelectPlots("selectVelo","selectVelo" ,$lesPlotsDispo));
 $formulaireDeposer->ajouterComposantTab();
 $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerInputSubmit("deposerVelo","deposerVelo", "Déposer" ));
 $formulaireDeposer->ajouterComposantTab();
@@ -31,10 +32,7 @@ $heure = date('H:i',$now);
 $res = null;
 
 if(isset($_POST['deposerVelo'])){
-    $verif = AbonneDAO::verificationEmprunt($_SESSION['abonne']);
-    if(!is_null($verif)){
-        $res = louerDAO::louerVelo($_POST['selectVelo'], $_SESSION['abonne']->getCODEACCES(), $_SESSION['NumStation'], $_POST['codeSecret'], $date, $heure);
-    }
+
 }
 
 

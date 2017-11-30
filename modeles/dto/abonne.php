@@ -9,6 +9,7 @@ class abonne{
     private $MONTANTADEBITER;
     private $VELOS;
     private $ABONNEMENT;
+    private $LOCATIONS;
 
 
     /**

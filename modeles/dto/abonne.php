@@ -11,26 +11,6 @@ class abonne{
     private $ABONNEMENT;
 
 
-
-    public function emprunterVelo($velo){
-        $res = false;
-        if(!is_null($velo)){
-            $this->VELOS = $velo;
-            $res = true;
-        }
-        return $res;
-    }
-
-    public function deposerVelo($plot){
-        $res = false;
-        if(!is_null($this->VELOS)){
-            $plot->setNUMV($this->VELOS);
-            $this->VELOS = null;
-            $res = true;
-        }
-        return $res;
-    }
-
     /**
      * abonne constructor.
      * @param $codeAcces
@@ -39,7 +19,7 @@ class abonne{
     public function __construct($codeAcces)
     {
         $this->CODEACCES = $codeAcces;
-        $this->VELOS = 0;
+        AbonneDAO::velosEmpruntes($this);
     }
 
     public function hydrate(array $donnees)

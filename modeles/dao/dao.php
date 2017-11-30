@@ -118,6 +118,18 @@ class StationDAO{
         $nbVelo = DBConnex::getInstance()->queryFetchFirstRow($sql);
         return $nbVelo[0];
     }
+
+    public static function plotsDiponiblesStation(station $station){
+        $res = array();
+        $sql = "select * from plot WHERE NUMV is null and NUMS = '" . $station->getNUMS() . "';";
+        $liste = DBConnex::getInstance()->queryFetchAll($sql);
+        foreach ($liste as $plot){
+            $unPlot = new plot();
+            $unPlot->hydrate($plot);
+            $res[] = $unPlot;
+        }
+        return $res;
+    }
 }
 
 class louerDAO{
@@ -132,6 +144,12 @@ class louerDAO{
         $res = DBConnex::getInstance()->insert($sql);
         return $res;
     }
+
+    public static function deposerVelo($unIdVelo, $unIdAbonne, $unIdStation, $unPlot , $heure){
+        $res = true;
+
+    }
+
 }
 
 
@@ -240,6 +258,18 @@ Class AbonneDAO{
         }
         return $login[0];
     }
+
+    public static function velosEmpruntes(abonne $abonne){
+        $res = array();
+        $sql = "select V.* from louer as L ,velo as V where L.NUMV = V.NUMV and CODEACCES = '" . $abonne->getCODEACCES() . "'";
+        $liste = DBConnex::getInstance()->queryFetchAll($sql);
+        foreach ($liste as $velo){
+            $unVelo = new velo();
+            $unVelo->hydrate($velo);
+            $res[] = $unVelo;
+        }
+        $abonne->setVELOS($res);
+    }
 }
 
 
@@ -345,9 +375,6 @@ class VeloDAO{
         return $result;
     }
 
-    public static function emprunterVelo(velo $velo){
-        $sql = "UPDATE velo SET 'NUMS'= null, 'NUM'= null WHERE NUMV='' ";
-    }
 }
 
 class AbonnementsDAO{

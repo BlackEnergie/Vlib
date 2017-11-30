@@ -47,7 +47,7 @@ function tabStation($tab, $entete, $classTab){
             $res .= $station->getNOMS() . "</td><td>";
             $res .= ($station->getCAPACITES() - $station->getNbVelos()) . "</td><td>";
             $res .= $station->getNbVelos() . "</td><td>";
-            if($leVelo == null) {
+            if(($leVelo == null) or ($station->getCAPACITES() - $station->getNbVelos()) == 0) {
                 $res .= "<img src='images/deposerN.png' alt='lien'>   ";
             }else {
                 $res .= "<a href = 'index.php?numStationD=" . $station->getNUMS() . "'>";

@@ -5,9 +5,11 @@
     </div>
 
     <div id="content">
-        <?php
-        $formulaireDeposer->afficherFormulaire()
-        ?>
+        <div class="vueEmprunt">
+            <?php
+                $formulaireDeposer->afficherFormulaire();
+            ?>
+        </div>
     </div>
 
     <div id="bas">

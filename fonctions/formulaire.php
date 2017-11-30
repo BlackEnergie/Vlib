@@ -103,7 +103,17 @@ public function creerInputRadio($unnom, $unevaleur,$unLabel){
         return $composant;
     }
 
-	public function creerInputSubmit($unNom, $unId, $uneValue){
+    public function creerSelectPlots($unNom, $unId, $options){
+        $composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
+        foreach ($options as $option){
+            $composant .= "<option value ='" . $option->getNUM() . "'>n° " . $option->getNUM() . "</option>" ;
+        }
+        $composant .= "</select></td></tr>";
+        return $composant;
+    }
+
+
+    public function creerInputSubmit($unNom, $unId, $uneValue){
 		$composant = "<input type = 'submit' name = '" . $unNom . "' id = '" . $unId . "' ";
 		$composant .= "value = '" . $uneValue . "'/> ";
 		return $composant;

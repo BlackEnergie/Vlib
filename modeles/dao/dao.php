@@ -417,13 +417,15 @@ function addPlot($Stations){
 //$lesPlots = PlotDAO::lesPlots();
 
 function addVelo($Plots){
-    $i = 8;
+    $i = 1;
     foreach ($Plots as $plot) {
-        $sql = "INSERT INTO `velo` (`NUMV`, `NUMS`, `NUM`, `ETATV`, `DMEC`) VALUES ('" . $i . "', '" . $plot->getNUMS() . "', '" . $plot->getNUM() . "', 'ES', '2015-10-10');";
-        DBConnex::getInstance()->insert($sql);
-        $sql = "UPDATE `plot` SET `NUMV` = '" . $i . "' WHERE `plot`.`NUMS` = '" . $plot->getNUMS() . "' AND `plot`.`NUM` = '" . $plot->getNUM() . "';";
-        DBConnex::getInstance()->update($sql);
-        $i++;
+        if ($i <= 500) {
+            $sql = "INSERT INTO `velo` (`NUMV`, `NUMS`, `NUM`, `ETATV`, `DMEC`) VALUES ('" . $i . "', '" . $plot->getNUMS() . "', '" . $plot->getNUM() . "', 'ES', '2015-10-10');";
+            DBConnex::getInstance()->insert($sql);
+            $sql = "UPDATE `plot` SET `NUMV` = '" . $i . "' WHERE `plot`.`NUMS` = '" . $plot->getNUMS() . "' AND `plot`.`NUM` = '" . $plot->getNUM() . "';";
+            DBConnex::getInstance()->update($sql);
+            $i++;
+        }
     }
 }
 

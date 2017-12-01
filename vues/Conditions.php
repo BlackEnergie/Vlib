@@ -5,6 +5,7 @@
 	</div>
 
 <div id="content">
+
 <p>
 Prendre un vélo dans une station, le déposer dans une autre, Vlib est un
 système de location en libre-service simple à utiliser, disponible 24
@@ -137,7 +138,6 @@ Ils sont la principale cause d’accident à vélo alors prudence ! L’angle mo
 - Gardez vos distances lorsqu’un camionneur manœuvre.
 <br/>
 - A l’arrêt, évitez de vous immobiliser sous les rétroviseurs d’un camion ou pire devant lui.<br/></p>
-
 
 
     <div id="bas">

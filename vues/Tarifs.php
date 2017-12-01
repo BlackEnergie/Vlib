@@ -5,6 +5,7 @@
     </div>
 
     <div id="content">
+        <div class="presentation">
 
 <p>Un accès vous est fourni sur une durée identique à celle de votre abonnement.
   Si vous vous abonnez occasionnellement, pour 24h, votre accès sera valable sur

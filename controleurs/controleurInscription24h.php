@@ -23,7 +23,7 @@
       $_SESSION['email']=$_POST['email'];
       $_SESSION['mdp']=$_POST['mdp'];
 
-      AbonneDAO::insertAbonne(mt_rand(1000, 9999),$_SESSION['mdp'],"24h",NULL,NULL,date("m-d-y"),NULL,NULL,NULL);
+      AbonneDAO::insertAbonne(mt_rand(1000, 9999),$_SESSION['mdp'],"24h",NULL,NULL,date("y-m-d"),NULL,NULL,NULL);
 
     }
  include_once 'vues/inscription24h.php'

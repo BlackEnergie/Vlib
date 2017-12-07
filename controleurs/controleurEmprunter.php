@@ -34,7 +34,6 @@ if(isset($_POST['emprunterVelo'])){
     if(!is_null($verif)){
         $res = louerDAO::louerVelo($_POST['selectVelo'], $_SESSION['abonne']->getCODEACCES(), $_SESSION['NumStation'], $_POST['codeSecret'], $date, $heure);
     }
-
 }
 
 if(isset($_POST['emprunterVelo']) && ($res == 1)){

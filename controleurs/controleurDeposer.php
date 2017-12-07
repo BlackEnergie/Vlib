@@ -4,7 +4,6 @@ include_once 'modeles/dto/stations.php';
 
 $lesStations = StationDAO::lesStations();
 $laStation = stations::chercher($lesStations , $_SESSION['NumStation']);
-$lesPlotsDispo = StationDAO::plotsDiponiblesStation($laStation);
 AbonneDAO::velosEmpruntes($_SESSION['abonne']);
 
 $formulaireDeposer = new Formulaire('post', 'index.php', 'deposer', 'formEmprunt');
@@ -17,7 +16,7 @@ $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerLabelId("Vél
 $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerSelectVelos("selectVelo","selectVelo" ,$_SESSION['abonne']->getVELOS()));
 $formulaireDeposer->ajouterComposantTab();
 $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerLabelId("Plots disponibles :", "text"));
-$formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerSelectPlots("selectVelo","selectVelo" ,$lesPlotsDispo));
+$formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerSelectPlots("selectVelo","selectVelo" ,$laStation->getPlotsDisponibles()));
 $formulaireDeposer->ajouterComposantTab();
 $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerInputSubmit("deposerVelo","deposerVelo", "Déposer" ));
 $formulaireDeposer->ajouterComposantTab();

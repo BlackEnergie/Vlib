@@ -6,14 +6,15 @@ class station{
     private $SITUATIONS;
     private $CAPACITES;
     private $NUMBORNE;
-    private $nbVelos;
+    private $velos;
+    private $plots;
 
-    /**
-     */
+
     public function __construct($num)
     {
         $this->NUMS = $num;
-        StationDAO::nbDeVeloDispo($this);
+        StationDAO::velosStation($this);
+        StationDAO::plotsStation($this);
     }
 
 
@@ -29,20 +30,56 @@ class station{
         }
     }
 
-    /**
-     * @return mixed
-     */
-    public function getNbVelos()
-    {
-        return $this->nbVelos;
+    public function getPlotsDisponibles(){
+        $res = array();
+        foreach ($this->plots as $plot){
+            if($plot->getNUMV() == null){
+                $res[] = $plot;
+            }
+        }
+        return $res;
+    }
+
+    public function getNbPlotsDispo(){
+        $plots = $this->getPlotsDisponibles();
+        return count($plots);
+    }
+
+    public function getNbVelos(){
+        return count($this->velos);
     }
 
     /**
-     * @param mixed $nbVelos
+     * @return mixed
      */
-    public function setNbVelos($nbVelos)
+    public function getPlots()
     {
-        $this->nbVelos = $nbVelos;
+        return $this->plots;
+    }
+
+    /**
+     * @param mixed $plots
+     */
+    public function setPlots($plots)
+    {
+        $this->plots = $plots;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getVelos()
+    {
+        return $this->velos;
+    }
+
+    /**
+     * @param mixed $velos
+     */
+    public function setVelos($velos)
+    {
+        $this->velos = $velos;
     }
 
 

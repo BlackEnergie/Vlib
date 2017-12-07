@@ -93,7 +93,7 @@ class StationDAO{
 
     public static function rechercher($nom){
         $result = array();
-        $sql = "select NUMS, NOMS, CAPACITES from station where NOMS LIKE '" . $nom . "%' order by NOMS";
+        $sql = "select NUMS, NOMS, CAPACITES from station where NOMS LIKE '%" . $nom . "%' order by NOMS";
         $liste = DBConnex::getInstance()->queryFetchAll($sql);
         if(!empty($liste)){
             foreach($liste as $station){
@@ -113,10 +113,28 @@ class StationDAO{
         return $uneStation;
     }
 
-    public static function nbDeVeloDispo(station $station){
-        $sql = "select count(PLOT.NUM) from PLOT where PLOT.NUMV is not Null and PLOT.NUMS= '". $station->getNUMS()."'";
-        $nbVelo = DBConnex::getInstance()->queryFetchFirstRow($sql);
-        $station->setNbVelos($nbVelo[0]);
+    public static function velosStation(station $station){
+        $res = array();
+        $sql = "SELECT * FROM `velo` WHERE NUM is not null and NUMS = '". $station->getNUMS() ."'";
+        $listeVelos = DBConnex::getInstance()->queryFetchAll($sql);
+        foreach ($listeVelos as $velo){
+            $unVelo = new velo();
+            $unVelo->hydrate($velo);
+            $res[] = $unVelo;
+        }
+        $station->setVelos($res);
+    }
+
+    public static function plotsStation(station $station){
+        $res = array();
+        $sql = "SELECT * FROM `plot` WHERE NUMS = '". $station->getNUMS() ."'";
+        $listePlots = DBConnex::getInstance()->queryFetchAll($sql);
+        foreach ($listePlots as $plot){
+            $unPlot = new plot();
+            $unPlot->hydrate($plot);
+            $res[] = $unPlot;
+        }
+        $station->setPlots($res);
     }
 
     public static function plotsDiponiblesStation(station $station){
@@ -135,19 +153,21 @@ class StationDAO{
 class louerDAO{
 
     public static function louerVelo($unIdVelo, $unIdAbonne, $unIdStation, $codeSecret, $date, $heure){
-        $res = true;
         $sql = "UPDATE `velo` SET `NUMS` = NULL, `NUM` = NULL WHERE `velo`.`NUMV` = '". $unIdVelo ."';";
-        $res = DBConnex::getInstance()->update($sql);
+        DBConnex::getInstance()->update($sql);
         $sql = "UPDATE `plot` SET `NUMV` = NULL WHERE `plot`.`NUMS` = '". $unIdStation ."' AND `plot`.`NUM` = '". $unIdVelo ."';";
-        $res = DBConnex::getInstance()->update($sql);
+        DBConnex::getInstance()->update($sql);
         $sql = "INSERT INTO `louer` (`CODEACCES`, `CODESECRET`, `NUMV`, `HEURE`, `DATEM`, `TEMPSLOC`) VALUES ('". $unIdAbonne ."', '". $codeSecret ."', '". $unIdVelo ."', '" . $heure . "', '". $date ."', NULL);";
         $res = DBConnex::getInstance()->insert($sql);
         return $res;
     }
 
     public static function deposerVelo($unIdVelo, $unIdAbonne, $unIdStation, $unPlot , $heure){
-        $res = true;
-        $sql = "";
+        $sql = "UPDATE velo SET NUMS ='" . $unIdStation . "', NUM='" . $unPlot . "';";
+        $res = DBConnex::getInstance()->update(sql);
+        if ($res == 1){
+
+        }
     }
 
 }
@@ -261,7 +281,7 @@ Class AbonneDAO{
 
     public static function velosEmpruntes(abonne $abonne){
         $res = array();
-        $sql = "select V.* from louer as L ,velo as V where L.NUMV = V.NUMV and CODEACCES = '" . $abonne->getCODEACCES() . "'";
+        $sql = "select V.* from louer as L ,velo as V where L.NUMV = V.NUMV and CODEACCES = '" . $abonne->getCODEACCES() . "' and L.TEMPSLOC is null";
         $liste = DBConnex::getInstance()->queryFetchAll($sql);
         foreach ($liste as $velo){
             $unVelo = new velo();

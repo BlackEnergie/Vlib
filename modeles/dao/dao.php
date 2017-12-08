@@ -153,9 +153,9 @@ class StationDAO{
 class louerDAO{
 
     public static function louerVelo($unIdVelo, $unIdAbonne, $unIdStation, $codeSecret, $date, $heure){
-        $sql = "UPDATE `velo` SET `NUMS` = NULL, `NUM` = NULL WHERE `velo`.`NUMV` = '". $unIdVelo ."';";
+        $sql = "UPDATE `velo` SET `NUMS` = NULL, `NUM` = NULL WHERE `velo`.`NUMV` = ". $unIdVelo .";";
         DBConnex::getInstance()->update($sql);
-        $sql = "UPDATE `plot` SET `NUMV` = NULL WHERE `plot`.`NUMS` = '". $unIdStation ."' AND `plot`.`NUM` = '". $unIdVelo ."';";
+        $sql = "UPDATE `plot` SET `NUMV` = NULL WHERE `plot`.`NUMS` = ". $unIdStation ." AND `plot`.`NUM` = ". $unIdVelo .";";
         DBConnex::getInstance()->update($sql);
         $sql = "INSERT INTO `louer` (`CODEACCES`, `CODESECRET`, `NUMV`, `HEURE`, `DATEM`, `TEMPSLOC`) VALUES ('". $unIdAbonne ."', '". $codeSecret ."', '". $unIdVelo ."', '" . $heure . "', '". $date ."', NULL);";
         $res = DBConnex::getInstance()->insert($sql);
@@ -164,7 +164,7 @@ class louerDAO{
 
     public static function deposerVelo($unIdVelo, $unIdAbonne, $unIdStation, $unPlot , $heure){
         $sql = "UPDATE velo SET NUMS ='" . $unIdStation . "', NUM='" . $unPlot . "';";
-        $res = DBConnex::getInstance()->update(sql);
+        $res = DBConnex::getInstance()->update($sql);
         if ($res == 1){
 
         }

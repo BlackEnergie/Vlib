@@ -16,7 +16,7 @@ $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerLabelId("Vél
 $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerSelectVelos("selectVelo","selectVelo" ,$_SESSION['abonne']->getVELOS()));
 $formulaireDeposer->ajouterComposantTab();
 $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerLabelId("Plots disponibles :", "text"));
-$formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerSelectPlots("selectVelo","selectVelo" ,$laStation->getPlotsDisponibles()));
+$formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerSelectPlots("selectPlot","selectPlot" ,$laStation->getPlotsDisponibles()));
 $formulaireDeposer->ajouterComposantTab();
 $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerInputSubmit("deposerVelo","deposerVelo", "Déposer" ));
 $formulaireDeposer->ajouterComposantTab();
@@ -31,8 +31,18 @@ $heure = date('H:i',$now);
 $res = null;
 
 if(isset($_POST['deposerVelo'])){
-
+    $res = louerDAO::deposerVelo($_POST['selectVelo'], $_SESSION['abonne']->getCODEACCES() , $_SESSION['NumStation'], $_POST['selectPlot']);
+    if ($res == 1){
+        $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerLabelId("Dépôt effectué", "ok"));
+        $formulaireDeposer->ajouterComposantTab();
+        $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerLabelId("Vélo n°" . $_POST['selectVelo'] , ""));
+        $formulaireDeposer->ajouterComposantTab();
+    }else{
+        $formulaireDeposer->ajouterComposantLigne($formulaireDeposer->creerLabelId("Echec du dépôt", "echec"));
+        $formulaireDeposer->ajouterComposantTab();
+    }
 }
+
 
 
 $formulaireDeposer->creerFormulaire();

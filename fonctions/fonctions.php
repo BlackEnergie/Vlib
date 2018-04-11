@@ -47,13 +47,13 @@ function tabStation($tab, $entete, $classTab){
             $res .= $station->getNOMS() . "</td><td>";
             $res .= ($station->getCAPACITES() - $station->getNbVelos()) . "</td><td>";
             $res .= $station->getNbVelos() . "</td><td>";
-            if(count($lesVelo) > 0 and ($station->getCAPACITES() - $station->getNbVelos()) > 0) {
+            if(count($lesVelo) > 0 && ($station->getCAPACITES() - $station->getNbVelos()) > 0) {
                 $res .= "<a href = 'index.php?numStationD=" . $station->getNUMS() . "'>";
-                $res .= "<img src='images/deposer.jpg' alt='lien'></a>   ";
+                $res .= "<img src='images/deposer.jpg' alt='lien'></a>";
             }else {
-                $res .= "<img src='images/deposerN.png' alt='lien'>   ";
+                $res .= "<img src='images/deposerN.png' alt='lien'>";
             }
-            if($station->getNbVelos() >= 1) { //Vérifie qu'il y a un vélo sur la station
+            if($station->getNbVelos() > 0) { //Vérifie qu'il y a un vélo sur la station
                 $res .= "<a href='index.php?numStationE=" . $station->getNUMS() . "'>";
                 $res .= "<img src='images/emprunter.jpg' alt=''></a></td></tr>";
             } else{

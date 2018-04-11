@@ -162,12 +162,19 @@ class louerDAO{
         return $res;
     }
 
-    public static function deposerVelo($unIdVelo, $unIdAbonne, $unIdStation, $unPlot , $heure){
-        $sql = "UPDATE velo SET NUMS ='" . $unIdStation . "', NUM='" . $unPlot . "';";
+    public static function deposerVelo($unIdVelo, $unIdAbonne, $unIdStation, $unPlot){
+        date_default_timezone_set('Europe/Paris');
+        $now= new DateTime("now");
+        $sql = "UPDATE velo SET NUMS ='" . $unIdStation . "', NUM='" . $unPlot . "' WHERE NUMV = '" . $unIdVelo . "';";
+        $sql .= "UPDATE plot SET NUMV = '" . $unIdVelo . "' WHERE NUM = '" . $unPlot . "';" ;
         $res = DBConnex::getInstance()->update($sql);
-        if ($res == 1){
-
-        }
+        $sql = "SELECT DATEM, HEURE FROM louer WHERE CODEACCES ='" . $unIdAbonne . "' AND NUMV='" . $unIdVelo . "' AND TEMPSLOC is null;";
+        $dateTime = DBConnex::getInstance()->queryFetchFirstRow($sql);
+        $new_hour = date_create($dateTime['DATEM'] . ' ' . $dateTime['HEURE']);
+        $tempsLoc = $new_hour->diff($now);
+        $minLoc = $tempsLoc->d*24*60 + $tempsLoc->h*60 + $tempsLoc->i;
+        $sql = "UPDATE louer SET TEMPSLOC =" . $minLoc . " WHERE CODEACCES ='" . $unIdAbonne . "' AND NUMV='" . $unIdVelo . "' AND TEMPSLOC is null;";
+        return $res = DBConnex::getInstance()->update($sql);
     }
 
 }
@@ -421,8 +428,6 @@ class AbonnementsDAO{
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//$lesStations = StationDAO::lesStations();
-
 function addPlot($Stations){
     foreach ($Stations as $uneStation){
         for ($i = 1; $i <= $uneStation->getCAPACITES() ; $i++){
@@ -432,9 +437,9 @@ function addPlot($Stations){
     }
 }
 
-//addPlot($lesStations);
 
-//$lesPlots = PlotDAO::lesPlots();
+
+
 
 function addVelo($Plots){
     $i = 1;
@@ -449,13 +454,17 @@ function addVelo($Plots){
     }
 }
 
-//addVelo($lesPlots);
+
 
 function ajouterAbonnements(){
     $sql = "INSERT INTO `abonnement` VALUES ('24h', '24 heures', 24 , 1.6 , 24 , 2 ,200, NULL),('1mois', '1 mois', 30, 15, 720, 1, 200, NULL), ('1an', '1 an', 365, 35, 21900, 1, 200 , NULL);";
     DBConnex::getInstance()->insert($sql);
 }
 
+//$lesStations = StationDAO::lesStations();
+//addPlot($lesStations);
+//$lesPlots = PlotDAO::lesPlots();
+//addVelo($lesPlots);
 //ajouterAbonnements();
 
 

@@ -1105,7 +1105,7 @@ CREATE TABLE `responsable` (
   `NOM` char(32) NOT NULL,
   `PRENOM` char(32) NOT NULL,
   `DATEEMBAUCHE` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `responsable`

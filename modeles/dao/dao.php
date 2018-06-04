@@ -108,9 +108,12 @@ class StationDAO{
     public static function rechercherID($id){
         $sql = "select NUMS, NOMS, CAPACITES from station where NUMS='" . $id . "';";
         $station = DBConnex::getInstance()->queryFetchFirstRow($sql);
-        $uneStation = new station($station['NUMS']);
-        $uneStation->hydrate($station);
-        return $uneStation;
+        if(!empty($station)){
+            $uneStation = new station($station['NUMS']);
+            $uneStation->hydrate($station);
+            return $uneStation;
+        }
+        return null;
     }
 
     public static function velosStation(station $station){
@@ -152,17 +155,17 @@ class StationDAO{
 
 class louerDAO{
 
-    public static function louerVelo($unIdVelo, $unIdAbonne, $unIdStation, $codeSecret, $date, $heure){
+    public static function louerVelo($unIdVelo, $unIdAbonne, $unIdStation, $codeSecret, $date, $heure, $stationEmprunt){
         $sql = "UPDATE `velo` SET `NUMS` = NULL, `NUM` = NULL WHERE `velo`.`NUMV` = ". $unIdVelo .";";
         DBConnex::getInstance()->update($sql);
         $sql = "UPDATE `plot` SET `NUMV` = NULL WHERE `plot`.`NUMS` = ". $unIdStation ." AND `plot`.`NUM` = ". $unIdVelo .";";
         DBConnex::getInstance()->update($sql);
-        $sql = "INSERT INTO `louer` (`CODEACCES`, `CODESECRET`, `NUMV`, `HEURE`, `DATEM`, `TEMPSLOC`) VALUES ('". $unIdAbonne ."', '". $codeSecret ."', '". $unIdVelo ."', '" . $heure . "', '". $date ."', NULL);";
+        $sql = "INSERT INTO `louer` (`CODEACCES`, `CODESECRET`, `NUMV`, `HEURE`, `DATEM`, `TEMPSLOC`, `STATIONEMPRUNT`) VALUES ('". $unIdAbonne ."', '". $codeSecret ."', '". $unIdVelo ."', '" . $heure . "', '". $date ."', NULL, '" . $stationEmprunt . "');";
         $res = DBConnex::getInstance()->insert($sql);
         return $res;
     }
 
-    public static function deposerVelo($unIdVelo, $unIdAbonne, $unIdStation, $unPlot){
+    public static function deposerVelo($unIdVelo, $unIdAbonne, $unIdStation, $unPlot, $stationDepot){
         date_default_timezone_set('Europe/Paris');
         $now= new DateTime("now");
         $sql = "UPDATE velo SET NUMS ='" . $unIdStation . "', NUM='" . $unPlot . "' WHERE NUMV = '" . $unIdVelo . "';";
@@ -173,7 +176,7 @@ class louerDAO{
         $new_hour = date_create($dateTime['DATEM'] . ' ' . $dateTime['HEURE']);
         $tempsLoc = $new_hour->diff($now);
         $minLoc = $tempsLoc->d*24*60 + $tempsLoc->h*60 + $tempsLoc->i;
-        $sql = "UPDATE louer SET TEMPSLOC =" . $minLoc . " WHERE CODEACCES ='" . $unIdAbonne . "' AND NUMV='" . $unIdVelo . "' AND TEMPSLOC is null;";
+        $sql = "UPDATE louer SET TEMPSLOC =" . $minLoc . ", STATIONDEPOT ='" . $stationDepot . "' WHERE CODEACCES ='" . $unIdAbonne . "' AND NUMV='" . $unIdVelo . "' AND TEMPSLOC is null;";
         return $res = DBConnex::getInstance()->update($sql);
     }
 
@@ -233,6 +236,21 @@ Class AbonneDAO{
             return null;
         }
         return $login[0];
+    }
+
+    public static function toutesLesLocations(abonne $unAbonne){
+        $sql = "select * from louer where CODEACCES = '" . $unAbonne->getCODEACCES() . "' order by DATEM, HEURE";
+        $res = DBConnex::getInstance()->queryFetchAll($sql);
+        if (empty($res)){
+            return null;
+        }
+        $locations = array();
+        foreach ($res as $ligne){
+            $location = new louer();
+            $location->hydrate($ligne);
+            $locations[] = $location;
+        }
+        return $locations;
     }
 
 //************ requete qui insere un abonné dans la bdd******************

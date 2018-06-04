@@ -32,7 +32,7 @@ $res = null;
 if(isset($_POST['emprunterVelo'])){
     $verif = AbonneDAO::verificationEmprunt($_SESSION['abonne']);
     if(!is_null($verif)){
-        $res = louerDAO::louerVelo($_POST['selectVelo'], $_SESSION['abonne']->getCODEACCES(), $_SESSION['NumStation'], $_POST['codeSecret'], $date, $heure);
+        $res = louerDAO::louerVelo($_POST['selectVelo'], $_SESSION['abonne']->getCODEACCES(), $_SESSION['NumStation'], $_POST['codeSecret'], $date, $heure, $_SESSION['NumStation']);
     }
 }
 

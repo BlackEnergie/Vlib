@@ -7,9 +7,14 @@ class louer
     private $HEURE;
     private $DATEM;
     private $TEMPSLOC;
+    private $STATIONEMPRUNT;
+    private $STATIONDEPOT;
 
     public function __construct()
     {
+        $this->STATIONEMPRUNT = StationDAO::rechercherID($this->STATIONEMPRUNT);
+        if(!is_null($this->STATIONDEPOT))
+            $this->STATIONDEPOT = StationDAO::rechercherID($this->STATIONDEPOT);
 
     }
 
@@ -24,6 +29,49 @@ class louer
             }
         }
     }
+
+    public function getDateHeureDepot(){
+        $dateDepot = null;
+        if(!is_null($this->TEMPSLOC)){
+            $dateDepot = date_create($this->DATEM. ' ' . $this->HEURE);
+            $dateDepot->add(new DateInterval('PT' . $this->TEMPSLOC . 'M'));
+        }
+        return $dateDepot;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSTATIONEMPRUNT()
+    {
+        return $this->STATIONEMPRUNT;
+    }
+
+    /**
+     * @param mixed $STATIONEMPRUNT
+     */
+    public function setSTATIONEMPRUNT($STATIONEMPRUNT)
+    {
+        $this->STATIONEMPRUNT = $STATIONEMPRUNT;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSTATIONDEPOT()
+    {
+        return $this->STATIONDEPOT;
+    }
+
+    /**
+     * @param mixed $STATIONDEPOT
+     */
+    public function setSTATIONDEPOT($STATIONDEPOT)
+    {
+        $this->STATIONDEPOT = $STATIONDEPOT;
+    }
+
+
 
     /**
      * @return mixed

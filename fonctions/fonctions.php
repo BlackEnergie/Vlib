@@ -49,15 +49,15 @@ function tabStation($tab, $entete, $classTab){
             $res .= $station->getNbVelos() . "</td><td>";
             if(count($lesVelo) > 0 && ($station->getCAPACITES() - $station->getNbVelos()) > 0) {
                 $res .= "<a href = 'index.php?numStationD=" . $station->getNUMS() . "'>";
-                $res .= "<img src='images/deposer.jpg' alt='lien'></a>";
+                $res .= "<img title='Déposer' src='images/deposer.jpg' alt='lien'></a>";
             }else {
-                $res .= "<img src='images/deposerN.png' alt='lien'>";
+                $res .= "<img title='Dépôt impossible' src='images/deposerN.png' alt='lien'>";
             }
             if($station->getNbVelos() > 0) { //Vérifie qu'il y a un vélo sur la station
                 $res .= "<a href='index.php?numStationE=" . $station->getNUMS() . "'>";
-                $res .= "<img src='images/emprunter.jpg' alt=''></a></td></tr>";
+                $res .= "<img title='Emprunter' src='images/emprunter.jpg' alt=''></a></td></tr>";
             } else{
-                $res .= "<img src='images/emprunterN.png' alt=''></td></tr>";
+                $res .= "<img title='Emprunt impossible' src='images/emprunterN.png' alt=''></td></tr>";
             }
         }
     }

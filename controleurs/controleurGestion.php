@@ -8,6 +8,7 @@ $formulaireRechercheStation->ajouterComposantTab();
 $formulaireRechercheStation->ajouterComposantLigne($formulaireRechercheStation->creerInputTexte('rechercheStation', 'rechercheStation', '', 0, 'Rechercher une station', 0));
 $formulaireRechercheStation->ajouterComposantTab();
 $formulaireRechercheStation->ajouterComposantLigne($formulaireRechercheStation->creerInputSubmit('recherche', 'recherche', 'Rechercher'));
+$formulaireRechercheStation->ajouterComposantLigne($formulaireRechercheStation->creerInputSubmit('annuler', 'annuler', 'Annuler'));
 $formulaireRechercheStation->ajouterComposantTab();
 
 $formulaireRechercheStation->creerFormulaire();
@@ -21,7 +22,7 @@ $entete[4] = "Déposer/Emprunter";
 
 $lesStations = array();
 
-if(isset($_POST['rechercheStation'])){
+if(isset($_POST['recherche'])){
     $lesStations = StationDAO::rechercher($_POST['rechercheStation']);
 } else{
     $lesStations = StationDAO::lesStations();

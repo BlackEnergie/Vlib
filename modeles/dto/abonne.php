@@ -20,6 +20,7 @@ class abonne{
     public function __construct($codeAcces)
     {
         $this->CODEACCES = $codeAcces;
+        $this->LOCATIONS = AbonneDAO::toutesLesLocations($this);
         AbonneDAO::velosEmpruntes($this);
     }
 
@@ -33,6 +34,22 @@ class abonne{
                 $this->$method($value);
             }
         }
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getLOCATIONS()
+    {
+        return $this->LOCATIONS;
+    }
+
+    /**
+     * @param array|null $LOCATIONS
+     */
+    public function setLOCATIONS($LOCATIONS)
+    {
+        $this->LOCATIONS = $LOCATIONS;
     }
 
     /**
